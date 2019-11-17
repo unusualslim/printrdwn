@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  location: one
+  equipment: one
+  serial: MyString
+  description: MyText
+
+two:
+  location: two
+  equipment: two
+  serial: MyString
+  description: MyText

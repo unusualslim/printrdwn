@@ -1,0 +1,10 @@
+<%= form_with(model: [ @support_case, @support_case.comments.build ]) do |f| %>
+  <p>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </p>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

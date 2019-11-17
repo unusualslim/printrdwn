@@ -1,0 +1,6 @@
+<ul>
+  <li> <%= comment.body %> </li>
+    <ul>
+      <li><%= comment.user.email unless comment.user.blank? %></li>
+    </ul>
+</ul>

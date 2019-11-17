@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Location</th>
+    <th>Manufacturer</th>
+    <th>Model</th>
+  </tr>
+  <% @assets.each do |asset| %>
+    <tr>
+      <td><%= link_to asset.id, asset_path(asset) %></td>
+      <td><%= asset.location.name %></td>
+      <td><%= asset.equipment.manufacturer.name %></td>
+      <td><%= asset.equipment.model %></td>
+    </tr>
+  <% end %>
+</table>

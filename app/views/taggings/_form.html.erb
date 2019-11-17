@@ -1,0 +1,12 @@
+<%= form_with(model: [ @asset, @asset.taggings.build ], local: true) do |f| %>
+  <p>
+    <%= f.label :tag %>
+    <%= f.collection_select :tag_id, Tag.all, :id, :name, prompt: true %>
+  </p>
+    <%= f.label :value %>
+    <%= f.text_field :value %>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+

@@ -1,0 +1,7 @@
+ID:  <%= @support_case.id %>
+SUBJECT:  <%= @support_case.subject %> 
+LOCATION: <%= @support_case.location.name unless @support_case.location.blank? %>
+REQUESTED BY:  <%= @support_case.user.email unless @support_case.user.blank? %>
+STATUS:  <%= @support_case.status.status unless @support_case.status.blank? %>
+SEVERITY:  <%= @support_case.severity.severity unless @support_case.status.blank? %>
+DESCRIPTION:   <%= @support_case.description %>

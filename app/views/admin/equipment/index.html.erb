@@ -1,0 +1,23 @@
+
+<%= link_to 'New', new_admin_equipment_path %>
+<table class="table table-striped">
+   <thead>
+   <tr>
+    <th scope="col">Model </th>
+    <th scope="col">Manufacturer</th>
+    <th scope="col" colspan="1"></th>
+  </tr>
+  <thead>
+
+  <tbody>
+  <% @equipments.each do |equipment| %>
+    <tr scope="row">
+      <td><%= link_to equipment.model,admin_equipment_path(equipment) %></td>
+      <td><%= equipment.manufacturer.name %></td>
+      <td><%= link_to 'edit', edit_admin_equipment_path(equipment) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+

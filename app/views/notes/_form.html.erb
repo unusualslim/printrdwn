@@ -1,0 +1,26 @@
+<noscript>YOU DON'T HAVE JAVASCRIPT AND THAT OFFENDS ME</noscript>
+
+<%= form_for @note do |f| %>
+<p>
+  <%= f.label :title %><br>
+  <%= f.text_field :title %>
+</p>
+<p>
+  <%= f.label :content %><br>
+  <%= f.text_area :content, id: "wysiwyg" %>
+
+<script>
+ $('#wysiwyg').editable({
+inlineMode: false,
+minHeight: '200px',
+buttons: ['bold', 'italic', 'underline','formatBlock','align',
+'insertUnorderedList', 'insertOrderedList', 'outdent', 'indent',
+'createLink', 'html'],
+ })
+</script>
+</p>
+<p>
+  <%= f.submit %>
+</p>
+
+<% end %>

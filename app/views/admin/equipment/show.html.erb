@@ -1,0 +1,15 @@
+<h1><%= @equipment.model %></h1>
+<h2><%= @equipment.manufacturer.name %></h2>
+
+<h2>Assets</h2>
+<% @equipment.assets.each do |asset| %>
+     <p><strong>Location: </strong><%= asset.location.short_name %></p>
+     <p><strong>Serial: </strong><%= asset.serial %></p>
+     <p><strong>Additional Info: </strong><%= asset.description %></p>
+     <%= link_to 'Delete Asset', [asset.location, asset],
+       method: :delete,
+       data: { confirm: 'Are you sure?'} %>
+<% end %>
+
+
+<%=  link_to 'Equipment', admin_equipment_index_path %>

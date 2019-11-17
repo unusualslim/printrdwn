@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyText
+  commenter: MyString
+  support_case: one
+
+two:
+  body: MyText
+  commenter: MyString
+  support_case: two

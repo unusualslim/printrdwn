@@ -1,0 +1,33 @@
+<div class="container-fluid">
+<ul class="nav navbar-nav navbar-inverse">
+  <li class="nav-item">
+    <%= link_to 'Home', controller: '/pages' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Notes', controller: '/notes' %>
+  </li>
+<!--  <li>
+    <%= link_to 'File Share', controller: '/things' %>
+  </li>
+-->
+  <li class="nav-item">
+    <%= link_to 'Cases', controller: '/support_cases' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Locations', controller: '/locations' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Admin', admin_index_path %>
+  </li>
+-->
+</ul>
+<p class="navbar-text pull-right">
+ <% if current_user %>
+    <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+ <% else %>
+    <%= link_to "Register", new_user_registration_path %>
+    <%= link_to "Sign In", new_user_session_path %>
+ <% end %>
+</p>
+
+</div>
