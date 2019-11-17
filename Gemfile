@@ -18,7 +18,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
-gem 'paperclip', '~>2.3'
+gem 'paperclip', '~>6.1'
 gem 'wysiwyg-rails'
 gem 'font-awesome-rails'
 
