@@ -18,7 +18,7 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(note_params)
     if @note.save
-      redirect_to @note
+      redirect_to action: "index"
     else
       render 'new'
     end
@@ -28,7 +28,7 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
 
     if @note.update(note_params)
-      redirect_to @note
+      redirect_to action: "index"
     else
       render 'edit'
     end

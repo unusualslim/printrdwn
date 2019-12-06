@@ -1,25 +1,53 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Things</h1>
+<button type="button" class="btn btn-primary"><%= link_to 'Upload', new_thing_path %></button>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th colspan="3"></th>
-    </tr>
+      <th scope="col">Name</th>
+      <th scope="col">Date Modified</th>
+      <th scope="col">Size</th>
+      <th scope="col">Type</th>
+    <tr>
   </thead>
-
-  <tbody>
+  <tbody>  
     <% @things.each do |thing| %>
       <tr>
-        <td><%= link_to 'Show', thing %></td>
-        <td><%= link_to 'Edit', edit_thing_path(thing) %></td>
-        <td><%= link_to 'Destroy', thing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    
+<!--      <td>
+          <% case thing.it.content_type
+            when "image/png" %>
+              <%= image_tag((thing.it.variant(resize: "100x100") if thing.it.attached?),  :class => "thing-img") %>
+            <% when "image/jpeg" %>
+              <%= image_tag((thing.it.variant(resize: "100x100") if thing.it.attached?),  :class => "thing-img") %>
+            <% when "image/gif" %>
+              <%= image_tag((thing.it.variant(resize: "100x100") if thing.it.attached?),  :class => "thing-img") %>
+            <% when "video/mp4" %>
+              <%= video_tag((url_for(thing.it) if thing.it.attached?), class:"thing-img") %>
+            <% when "application/pdf" %>
+              <%= image_tag((thing.it.blob.preview(resize: "100x100") if thing.it.blob.previewable?), :class => "thing-img") %>
+            <% when "application/msword" %>
+              <%= image_tag((thing.it.blob.preview(resize: "100x100") if thing.it.blob.previewable?), :class => "thing-img") %>
+            <% when "application/vnd.openxmlformats-officedocument.wordprocessingml.document" %>
+              <%= image_tag((thing.it.blob.preview(resize: "100x100") if thing.it.blob.previewable?), :class => "thing-img") %>
+            <% when "application/vnd.ms-excel" %>
+              <%= image_tag((thing.it.blob.preview(resize: "100x100") if thing.it.blob.previewable?), :class => "thing-img") %>
+            <% when "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" %>
+              <%= image_tag((thing.it.blob.preview(resize: "100x100") if thing.it.blob.previewable?), :class => "thing-img") %>
+            <% when "application/vnd.ms-powerpoint" %>
+              <%= image_tag((thing.it.blob.preview(resize: "100x100") if thing.it.blob.previewable?), :class => "thing-img") %>
+            <% when "application/vnd.openxmlformats-officedocument.presentationml.presentation" %>
+              <%= image_tag((thing.it.blob.preview(resize: "100x100") if thing.it.blob.previewable?), :class => "thing-img") %>
+            <% else %>
+          <% end %>
+        </td>
+ -->
+        <td><%= link_to thing.it.filename, edit_thing_path(thing) %></td>
+        <td><%= thing.updated_at.strftime("%b %e, %Y at %l:%M %P") %></td>
+        <td><%= number_to_human_size(thing.it.byte_size) %></td>
+        <td><%= thing.it.content_type %></td>
+      </tr>      
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Thing', new_thing_path %>

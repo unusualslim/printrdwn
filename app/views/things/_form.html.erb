@@ -1,17 +1,28 @@
-<%= form_with(model: thing, local: true) do |form| %>
-  <% if thing.errors.any? %>
+<%= form_with model: @thing, local: true do |form| %>
+  <% if  @thing.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(thing.errors.count, "error") %> prohibited this thing from being saved:</h2>
-
+      <h2>
+        <%= pluralize(@thing.errors.count, "error") %>
+          prohibited this Attachment from being saved:
+      </h2>
       <ul>
-      <% thing.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @thing.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
+  <p>
+    Attachment:
+    <%= form.file_field :it %>
+    .jpg .gif .png .mp4 .doc .docx .ppt .pptx .xls .xlsx .pdf
+  </p>
+  <p>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  </p>
 
-  <div class="actions">
+  <p>
     <%= form.submit %>
-  </div>
+  </p>
+
 <% end %>

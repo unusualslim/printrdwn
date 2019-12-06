@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
-//= require froala_editor.min.js
+//= require turbolinks
+//= require tinymce
 //= require_tree .
 

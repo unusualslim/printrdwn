@@ -1,7 +1,19 @@
-<%= link_to 'New Note', new_note_path %>
 
-<ul>
-  <% @notes.each do |note| %>
-  <li><%= note.title %> <%= link_to 'Show', note_path(note) %> <%= link_to 'Edit', edit_note_path(note) %> </li>
-  <% end %>
-</ul>
+<button type="button" class="btn-primary"><%= link_to 'New Note', new_note_path %></button>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td scope="col">Title</td>
+      <td scope="col">Updated</td>
+    </thead>
+    <tbody>
+      <tr>  
+        <% @notes.each do |note| %>
+        <td><%= link_to note.title, edit_note_path(note) %></td>
+        <td><%= note.updated_at %></td>
+        <% end %>
+      </tr>
+    </tbody>
+  </thead>
+</table>

@@ -1,6 +1,4 @@
-<h1>Editing Thing</h1>
 
-<%= render 'form', thing: @thing %>
+<button class="button btn-secondary"><%= link_to 'Delete', thing_path(@thing), method: :delete %></button>
+<%= render 'form' %>
 
-<%= link_to 'Show', @thing %> |
-<%= link_to 'Back', things_path %>
