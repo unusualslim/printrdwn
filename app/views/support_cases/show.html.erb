@@ -29,6 +29,12 @@
   <strong>severity</strong>
   <%= @support_case.severity.severity unless @support_case.status.blank? %>
 </p>
+<p>
+  <% @support_case.files.each do |files| %>
+    <%= files.filename %>
+  <% end %>
+</p>
+
 
 <h2>Comments</h2>
   <%= render @support_case.comments %>

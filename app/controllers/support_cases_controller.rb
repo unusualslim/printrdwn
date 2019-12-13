@@ -20,7 +20,7 @@ class SupportCasesController < ApplicationController
     @support_case = SupportCase.new(support_case_params)
  
     if @support_case.save
-      SupportCaseMailer.with(support_case: @support_case).new_case_email.deliver_now
+#      SupportCaseMailer.with(support_case: @support_case).new_case_email.deliver_now
       redirect_to @support_case
     else
       render 'new'
@@ -31,7 +31,7 @@ class SupportCasesController < ApplicationController
     @support_case = SupportCase.find(params[:id])
  
     if @support_case.update(support_case_params)
-      SupportCaseMailer.with(support_case: @support_case).update_case_email.deliver_now   
+#      SupportCaseMailer.with(support_case: @support_case).update_case_email.deliver_now   
       redirect_to @support_case
     else
       render 'edit'
@@ -47,6 +47,6 @@ class SupportCasesController < ApplicationController
  
   private
     def support_case_params
-      params.require(:support_case).permit(:subject, :location_id, :asset_id,  :status_id, :user_id, :description, :severity_id)
+      params.require(:support_case).permit(:subject, :location_id, :asset_id,  :status_id, :user_id, :description, :severity_id, files: [])
     end
 end
