@@ -1,0 +1,27 @@
+
+<%= link_to 'New Task', new_task_path, :class => "btn btn-primary" %>
+
+<h2> Tasks </h2>
+<table class="table table-striped table-hover table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Task List</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Location</th>
+      <!-- <th scope="col" colspan="1"></th>-->
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @tasks.each do |task| %>
+    <tr scope="row" class=<%= "danger" if task.severity.severity == 'High' %>>
+      <td><%= link_to task.id, task_path(task) %></td>
+      <td><%= link_to task.task_list.name, task_list_path(task.task_list.id) %></td>
+      <td><%= task.subject %></td>
+      <td><%= link_to task.location.name, location_path(task.location.id) %></td> 
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

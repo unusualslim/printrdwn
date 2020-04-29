@@ -1,12 +1,7 @@
-<%= @asset.id %><br />
 <%= link_to @asset.location.name, location_path(@asset.location.id) %><br />
 <%= @asset.equipment.manufacturer.name %><br />
 <%= @asset.equipment.model %><br />
-<%= link_to 'Back', assets_path %>
-
-
-<h2>Tags</h2>
-  <%= render @asset.taggings %>
+<%= render @asset.taggings %>
 
 <h2>Add A Tag </h2>
   <%= render 'taggings/form' %>

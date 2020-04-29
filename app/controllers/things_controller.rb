@@ -1,7 +1,11 @@
 class ThingsController < ApplicationController
 
   def index
-    @things = Thing.all
+    @things = current_team.things.all
+  end
+
+  def show
+    @thing = Thing.find(params[:id])
   end
 
   def new
@@ -41,6 +45,6 @@ class ThingsController < ApplicationController
 
   private
     def thing_params
-      params.require(:thing).permit(:it)
+      params.require(:thing).permit(:it, :team_id)
     end
   end

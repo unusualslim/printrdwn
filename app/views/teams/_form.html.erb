@@ -1,0 +1,15 @@
+<%= form_for @team do |f| %>
+
+  <div>
+    <%= f.label :name  %>
+    <%= f.text_field :name %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :role_id, value: 1 %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+
+<% end %>
+

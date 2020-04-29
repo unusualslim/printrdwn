@@ -1,13 +1,13 @@
 <h1><%= @location.short_name %> <small><%= @location.name %></small></h1>
 
 
-<h2>Cases</h2>
+<h2>Tasks</h2>
 <table class="table table-striped table-hover table-responsive">
   <thead>
     <tr>
       <th scope="col">#</th>
+      <th scope="col">Task List</th>
       <th scope="col">Subject</th>
-      <th scope="col">Location</th>
       <th scope="col">Requested By</th>
       <th scope="col">Status</th>
       <th scope="col">Severity</th>
@@ -16,15 +16,16 @@
   </thead>
 
   <tbody>
-  <% @location_support_cases.each do |support_case| %>
+  <% @location_tasks.each do |task| %>
     <tr scope="row">
-      <td><%= link_to support_case.id, support_case_path(support_case) %></td>
-      <td><%= support_case.subject %></td>
-      <td><%= support_case.location.short_name unless support_case.location.blank? %></td>
-      <td><%= support_case.user.email unless support_case.user.blank? %></td>
-      <td><%= support_case.status.status unless support_case.status.blank? %></td>
-      <td><%= support_case.severity.severity unless support_case.severity.blank? %></td>
-      <td><%= link_to 'Edit', edit_support_case_path(support_case) %></td>
+      <td><%= link_to task.id, task_path(task) %></td>
+      <td><%= task.task_list.name %>
+      <td><%= link_to task.task_list.name, task_list_path(task.task_list.id) %></td>
+      <td><%= task.subject %></td>
+      <td><%= task.user.email unless task.user.blank? %></td>
+      <td><%= task.status.status unless task.status.blank? %></td>
+      <td><%= task.severity.severity unless task.severity.blank? %></td>
+      <td><%= link_to 'Edit', edit_task_path(task) %></td>
     </tr>
   <% end %>
   </tbody>
@@ -55,5 +56,7 @@
     <%= form.submit %>
   </p>
 <% end %>
+
+
 
 

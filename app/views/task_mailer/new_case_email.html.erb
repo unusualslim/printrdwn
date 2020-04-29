@@ -1,0 +1,33 @@
+<p> To view the most recent updates to this case go to: </p>
+<%= link_to @support_case.id, "http://printrdwn.com:3000/support_cases/#{@support_case.id}" %>
+<p>
+  <strong>Case ID</strong>
+  <%= @support_case.id %>
+</p>
+<p>
+  <strong>Subject</strong>
+  <%= @support_case.subject %>
+</p>
+<p>
+  <strong>Location</strong>
+  <%= @support_case.location.short_name unless @support_case.location.blank? %>
+</p>
+<p>
+  <strong>Requested By</strong>
+  <%= @support_case.user.email unless @support_case.user.blank? %>
+</p>
+<p>
+  <strong>Status</strong>
+  <%= @support_case.status.status unless @support_case.status.blank? %>
+</p>
+<p>
+  <strong>Description</strong>
+  <%= @support_case.description %>
+</p>
+<p>
+  <strong>severity</strong>
+  <%= @support_case.severity.severity unless @support_case.status.blank? %>
+</p>
+
+<h2>Comments</h2>
+  <%= render @support_case.comments %>

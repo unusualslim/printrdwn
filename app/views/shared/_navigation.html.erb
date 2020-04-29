@@ -1,7 +1,18 @@
 <div class="container-fluid">
 <ul class="nav navbar-nav navbar-inverse">
   <li class="nav-item">
+  <% if current_user %>
+    <%= form_with url: set_current_team_path do |f| %>
+      <%= f.collection_select :team, current_user.teams.all, :id, :name, {:selected => session[:current_team]} %>
+      <%= f.submit "Set Team" %>
+    <% end %>
+  <% end %>
+  </li>
+  <li class="nav-item">
     <%= link_to 'Home', controller: '/pages' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'My Teams', controller: '/teams' %>
   </li>
   <li class="nav-item">
     <%= link_to 'Notes', controller: '/notes' %>
@@ -10,19 +21,13 @@
     <%= link_to 'File Share', controller: '/things' %>
   </li>
   <li class="nav-item">
-    <%= link_to 'Cases', controller: '/support_cases' %>
+    <%= link_to 'Task Lists', controller: '/task_lists' %>
   </li>
   <li class="nav-item">
     <%= link_to 'Locations', controller: '/locations' %>
   </li>
-  <li class="nav-item">
-    <%= link_to 'Assets', controller: '/assets' %>
-  </li> 
-
- <li class="nav-item">
-    <%= link_to 'Admin', admin_index_path %>
-  </li>
--->
+    <%-# link_to 'Assets', controller: '/assets' -%>
+    <%-# link_to 'Admin', admin_index_path -%>
 </ul>
 <p class="navbar-text pull-right">
  <% if current_user %>

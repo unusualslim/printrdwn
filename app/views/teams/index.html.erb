@@ -1,0 +1,13 @@
+<%= link_to '+', new_team_path, :class => "btn btn-primary" %>
+<br>
+<h2>My Teams</h2>
+<% @my_teams.each do |mt| %>
+<%= link_to mt.name, team_path(mt) %><br>
+<% end %>
+<h2>Available Teams</h2>
+<% @available_teams.each do |at| %>
+<%= link_to at.name, team_path(at) %>
+<br>
+<% end %>
+
+

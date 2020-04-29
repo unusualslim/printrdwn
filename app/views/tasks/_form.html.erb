@@ -1,0 +1,48 @@
+<%= form_for @task do |form| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@task.errors.count, "error") %> prohibited
+        this Support Case from being saved:
+      </h2>
+      <ul>
+        <% @task.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+   <p>
+    <%= form.label :subject %>
+    <%= form.text_field :subject %>
+   </p>
+   <p>
+     <%= form.label "Locations" %>
+      <%= form.collection_check_boxes :location_ids, Location.all, :id, :name %>
+   </p>
+   <p>
+     <%= form.label :task_list %>
+     <%= form.collection_select :task_list_id, TaskList.all, :id, :name, {:selected => 1} %>
+   </p>
+   <p>
+     <%= form.label :severity %>
+     <%= form.collection_select :severity_id, Severity.all, :id, :severity, {:selected => 2} %>
+   </p>
+   <p>
+    <%= form.label :status %>
+    <%= form.collection_select :status_id, Status.all, :id, :status, {:selected => 1} %>
+  </p>
+  <p>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </p>
+  <p>
+    <%= form.label :attachments %>
+    <%= form.file_field :files, multiple: true %>
+  </p>
+
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

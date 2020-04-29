@@ -1,9 +1,9 @@
 class CommentsController < ApplicationController
   def create
-    @support_case = SupportCase.find(params[:support_case_id])
-    @comment = @support_case.comments.create(comment_params)
-    SupportCaseMailer.with(support_case: @support_case).update_case_email.deliver_now
-    redirect_to support_case_path(@support_case)
+    @task = Task.find(params[:task_id])
+    @comment = @task.comments.create(comment_params)
+    # TaskMailer.with(task: @task).update_task_email.deliver_now
+    redirect_to task_path(@task)
   end
 
   private

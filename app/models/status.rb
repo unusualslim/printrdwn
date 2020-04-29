@@ -1,3 +1,3 @@
 class Status < ApplicationRecord
-  has_many :support_cases
+  has_many :tasks
 end

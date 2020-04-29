@@ -1,0 +1,49 @@
+
+<%= link_to 'Edit', edit_task_path(@task.id), :class => "btn btn-primary" %>
+<%= link_to 'X', task_path(@task.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+<p>
+  <strong>Task List</strong>
+  <%= @task.task_list.name %>
+</p>
+<p>
+  <strong>ID</strong>
+  <%= @task.id %>
+</p>
+<p>
+  <strong>Subject</strong>
+  <%= @task.subject %>
+</p>
+<p>
+  <strong>Locations:</strong><br>
+  <% @task.task_locations.each do  |tl| %>
+    <%= tl.location.name %><br>
+  <% end %>
+</p>
+<p>
+  <strong>Requested By</strong>
+  <%= @task.user.email unless @task.user.blank? %>
+</p>
+<p>
+  <strong>Status</strong>
+  <%= @task.status.status unless @task.status.blank? %>
+</p>
+<p>
+  <strong>Description</strong>
+  <%= @task.description %>
+</p>
+<p>
+  <strong>severity</strong>
+  <%= @task.severity.severity unless @task.status.blank? %>
+</p>
+<p>
+  <% @task.files.each do |file| %>
+    <%= link_to file.filename, rails_blob_path(file) %><br>
+  <% end %>
+</p>
+
+
+<h2>Comments</h2>
+  <%= render @task.comments %>
+  <%= render 'comments/form' %>
+
+<%= link_to 'Back', task_list_path(@task.task_list.id) %>

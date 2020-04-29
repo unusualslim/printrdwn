@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_212529) do
+ActiveRecord::Schema.define(version: 2020_04_27_211809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,11 +47,11 @@ ActiveRecord::Schema.define(version: 2019_11_26_212529) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
-    t.bigint "support_case_id"
+    t.bigint "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.index ["support_case_id"], name: "index_comments_on_support_case_id"
+    t.index ["task_id"], name: "index_comments_on_task_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -81,6 +81,17 @@ ActiveRecord::Schema.define(version: 2019_11_26_212529) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.boolean "public"
+    t.bigint "team_id"
+    t.index ["team_id"], name: "index_notes_on_team_id"
+    t.index ["user_id"], name: "index_notes_on_user_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "severities", force: :cascade do |t|
@@ -94,23 +105,6 @@ ActiveRecord::Schema.define(version: 2019_11_26_212529) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "support_cases", force: :cascade do |t|
-    t.string "subject"
-    t.bigint "location_id"
-    t.bigint "status_id"
-    t.text "description"
-    t.bigint "severity_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.bigint "asset_id"
-    t.index ["asset_id"], name: "index_support_cases_on_asset_id"
-    t.index ["location_id"], name: "index_support_cases_on_location_id"
-    t.index ["severity_id"], name: "index_support_cases_on_severity_id"
-    t.index ["status_id"], name: "index_support_cases_on_status_id"
-    t.index ["user_id"], name: "index_support_cases_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -129,6 +123,56 @@ ActiveRecord::Schema.define(version: 2019_11_26_212529) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "task_lists", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.boolean "public"
+    t.bigint "team_id"
+    t.index ["team_id"], name: "index_task_lists_on_team_id"
+    t.index ["user_id"], name: "index_task_lists_on_user_id"
+  end
+
+  create_table "task_locations", force: :cascade do |t|
+    t.bigint "task_id"
+    t.bigint "location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_task_locations_on_location_id"
+    t.index ["task_id"], name: "index_task_locations_on_task_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string "subject"
+    t.bigint "location_id"
+    t.bigint "status_id"
+    t.text "description"
+    t.bigint "severity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "asset_id"
+    t.bigint "task_list_id"
+    t.index ["asset_id"], name: "index_tasks_on_asset_id"
+    t.index ["location_id"], name: "index_tasks_on_location_id"
+    t.index ["severity_id"], name: "index_tasks_on_severity_id"
+    t.index ["status_id"], name: "index_tasks_on_status_id"
+    t.index ["task_list_id"], name: "index_tasks_on_task_list_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
+  create_table "team_members", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "team_id"
+    t.bigint "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_team_members_on_role_id"
+    t.index ["team_id"], name: "index_team_members_on_team_id"
+    t.index ["user_id"], name: "index_team_members_on_user_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -139,6 +183,8 @@ ActiveRecord::Schema.define(version: 2019_11_26_212529) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.bigint "team_id"
+    t.index ["team_id"], name: "index_things_on_team_id"
     t.index ["user_id"], name: "index_things_on_user_id"
   end
 
@@ -162,15 +208,26 @@ ActiveRecord::Schema.define(version: 2019_11_26_212529) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assets", "equipment"
   add_foreign_key "assets", "locations"
-  add_foreign_key "comments", "support_cases"
+  add_foreign_key "comments", "tasks"
   add_foreign_key "comments", "users"
   add_foreign_key "equipment", "manufacturers"
-  add_foreign_key "support_cases", "assets"
-  add_foreign_key "support_cases", "locations"
-  add_foreign_key "support_cases", "severities"
-  add_foreign_key "support_cases", "statuses"
-  add_foreign_key "support_cases", "users"
+  add_foreign_key "notes", "teams"
+  add_foreign_key "notes", "users"
   add_foreign_key "taggings", "assets"
   add_foreign_key "taggings", "tags"
+  add_foreign_key "task_lists", "teams"
+  add_foreign_key "task_lists", "users"
+  add_foreign_key "task_locations", "locations"
+  add_foreign_key "task_locations", "tasks"
+  add_foreign_key "tasks", "assets"
+  add_foreign_key "tasks", "locations"
+  add_foreign_key "tasks", "severities"
+  add_foreign_key "tasks", "statuses"
+  add_foreign_key "tasks", "task_lists"
+  add_foreign_key "tasks", "users"
+  add_foreign_key "team_members", "roles"
+  add_foreign_key "team_members", "teams"
+  add_foreign_key "team_members", "users"
+  add_foreign_key "things", "teams"
   add_foreign_key "things", "users"
 end

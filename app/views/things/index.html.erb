@@ -1,5 +1,5 @@
 
-<button type="button" class="btn btn-primary"><%= link_to 'Upload', new_thing_path %></button>
+<%= link_to '+', new_thing_path, :class => "btn btn-primary" %>
 
 <table class="table table-hover">
   <thead>
@@ -8,6 +8,7 @@
       <th scope="col">Date Modified</th>
       <th scope="col">Size</th>
       <th scope="col">Type</th>
+      <th scope="col"></th>
     <tr>
   </thead>
   <tbody>  
@@ -42,11 +43,13 @@
           <% end %>
         </td>
  -->
-        <td><%= link_to thing.it.filename, edit_thing_path(thing) %></td>
+        <td><%= link_to thing.it.filename, rails_blob_path(thing.it) %></td>
         <td><%= thing.updated_at.strftime("%b %e, %Y at %l:%M %P") %></td>
         <td><%= number_to_human_size(thing.it.byte_size) %></td>
         <td><%= thing.it.content_type %></td>
-      </tr>      
+        <td><%= link_to 'View', rails_blob_path(thing.it) %></td>
+        <td><%= link_to 'Download', rails_blob_path(thing.it, disposition: "attachment") %></td>
+       </tr>      
     <% end %>
   </tbody>
 </table>

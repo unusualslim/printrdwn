@@ -1,5 +1,4 @@
-
-<button type="button" class="btn-primary"><%= link_to 'New Note', new_note_path %></button>
+<%= link_to '+', new_note_path, :class => "btn btn-primary" %>
 
 <table class="table table-hover">
   <thead>
@@ -8,12 +7,12 @@
       <td scope="col">Updated</td>
     </thead>
     <tbody>
-      <tr>  
-        <% @notes.each do |note| %>
+      <% @notes.each do |note| %>
+      <tr>
         <td><%= link_to note.title, edit_note_path(note) %></td>
         <td><%= note.updated_at %></td>
-        <% end %>
       </tr>
+      <% end %>
     </tbody>
   </thead>
 </table>

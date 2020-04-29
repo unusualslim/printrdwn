@@ -5,3 +5,10 @@
 @import "partials/*"; 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.nav a:visited { 
+  color: #fff;
+}
+.nav a:hover {
+  color: #505050;
+}

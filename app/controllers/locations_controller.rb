@@ -5,7 +5,7 @@ class LocationsController < ApplicationController
  
   def show
     @location = Location.find(params[:id])
-    @location_support_cases = SupportCase.where(location_id: @location.id)
+    @location_tasks = Task.where(location_id: @location.id)
   end
  
   def new

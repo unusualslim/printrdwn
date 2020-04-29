@@ -1,6 +1,3 @@
-<ul>
-  <li> <%= comment.body %> </li>
-    <ul>
-      <li><%= comment.user.email unless comment.user.blank? %></li>
-    </ul>
-</ul>
+
+<p> <%= comment.body %><br>
+-<%= comment.user.email unless comment.user.blank? %></p>

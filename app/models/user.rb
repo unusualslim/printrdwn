@@ -9,6 +9,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
          # :confirmable
 
-  has_many :support_case
+  has_many :tasks
   has_many :comment
+  has_many :team_members
+  has_many :teams, through: :team_members
+  has_many :roles, through: :team_members
 end

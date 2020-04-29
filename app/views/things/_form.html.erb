@@ -19,10 +19,11 @@
   </p>
   <p>
     <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :team_id, value: current_team.id %>
   </p>
 
   <p>
-    <%= form.submit %>
+    <%= form.submit "Upload" %>
   </p>
 
 <% end %>

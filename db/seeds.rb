@@ -17,6 +17,7 @@ Severity.create( severity: "Normal", description: "Needs to be fixed soon")
 Severity.create( severity: "Urgent", description: "All attention required")
 
 #Locations: 13 GNG
+Location.create( short_name: "N/A", name: "Not Applicable")
 Location.create( short_name: "AGG", name: "Americus Gas N Go")
 Location.create( short_name: "GGE", name: "Gas N Go Express")
 Location.create( short_name: "FM1", name: "Food Mart 1")
@@ -62,3 +63,7 @@ Equipment.create( model: "PX60 Passport", manufacturer_id: 1)
 Equipment.create( model: "Panther", manufacturer_id: 4)
 Equipment.create( model: "Radiant Site Controller", manufacturer_id: 4)
 
+#Roles
+Role.create( role: "Administrator")
+Role.create( role: "Contributor")
+Role.create( role: "Audience")

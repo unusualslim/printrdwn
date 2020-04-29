@@ -1,0 +1,9 @@
+<%= form_with(model: [ @task, @task.task_locations.build ], local: true) do |f| %>
+  <p>
+    <%= f.label :locations %>
+    <%= form.collection_check_boxes :locations, Location.all, :id, :name, prompt: true %>
+ </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

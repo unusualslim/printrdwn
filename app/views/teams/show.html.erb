@@ -1,0 +1,8 @@
+<h1><%= @team.name %></h1>
+<% @team_members.each do |tm| %>
+<%= tm.user.email %>
+<%= tm.role.role %>
+<br>
+<% end %>
+<h2>Join Team</h2>
+  <%= render 'team_members/form' %>
