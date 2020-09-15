@@ -10,6 +10,7 @@
       <th scope="col">Subject</th>
       <th scope="col">Locations</th>
       <th scope="col">Requested By</th>
+      <th scope="col">Assigned To</th>
       <th scope="col">Comments</th>
       <th scope="col">Attachments</th>
       <th scope="col">Status</th>
@@ -27,7 +28,8 @@
           <%= tl.location.short_name %>,
         <% end %>
     </td>
-    <td><%= task.user.email unless task.user.blank? %></td>
+    <td><%= task.requested_by.email unless task.requested_by.blank? %></td>
+    <td><%= task.assigned_to.email unless task.assigned_to.blank? %></td>
     <td><%= task.comments.count %></td>
     <td><%= task.files.count %></td>
     <td><%= task.status.status unless task.status.blank? %></td>
