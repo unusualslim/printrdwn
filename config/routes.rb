@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+
   root :to => "pages#index"
 
   get "pages/:page" => "pages#show"   
@@ -16,15 +17,16 @@ Rails.application.routes.draw do
   resources :assets, only: [:index, :show]
   resources :tags
   resources :sessions
-  resources :teams do
-    resources :team_members
-  end
+#  resources :teams do
+#    resources :team_members
+#  end
   resources :user
   resources :things
   resources :notes
   resources :severities
   resources :statuses  
-  resources :team_members, only: [:index, :update, :show, :destroy]
+  resources :contacts
+#  resources :team_members, only: [:index, :update, :show, :destroy]
 
   resources :assets do
     resources :taggings
@@ -46,6 +48,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  post "set_current_team", to: "teams#set_current_team", as: 'set_current_team' 
+  post "change_filename", to: "things#change_filename", as: "change_filename"
+#  post "set_current_team", to: "teams#set_current_team", as: 'set_current_team' 
 
 end

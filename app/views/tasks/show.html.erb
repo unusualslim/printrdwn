@@ -21,7 +21,11 @@
 </p>
 <p>
   <strong>Requested By</strong>
-  <%= @task.user.email unless @task.user.blank? %>
+  <%= @task.requested_by.email unless @task.requested_by.blank? %>
+</p>
+<p>
+  <strong>Assigned To</strong>
+  <%= @task.assigned_to.email unless @task.assigned_to.blank? %>
 </p>
 <p>
   <strong>Status</strong>

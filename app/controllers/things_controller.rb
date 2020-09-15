@@ -1,7 +1,7 @@
 class ThingsController < ApplicationController
 
   def index
-    @things = current_team.things.all
+    @things = Thing.all
   end
 
   def show
@@ -42,9 +42,14 @@ class ThingsController < ApplicationController
   
     redirect_to things_path
   end
+  
+  def change_filename
+    attachment = ActiveStorage::Attachment.find(attachment_id)
+    attachment.blob.update!(filename: 'new_filename.pdf')
+  end
 
   private
     def thing_params
-      params.require(:thing).permit(:it, :team_id)
+      params.require(:thing).permit(:it, :user_id)
     end
   end

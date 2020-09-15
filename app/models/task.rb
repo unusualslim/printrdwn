@@ -1,7 +1,8 @@
 class Task < ApplicationRecord
   belongs_to :status
   belongs_to :severity
-  belongs_to :user
+  belongs_to :requested_by, :class_name => 'User'
+  belongs_to :assigned_to, :class_name => 'User'
   belongs_to :task_list
 
   has_many :task_locations

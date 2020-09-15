@@ -1,14 +1,12 @@
-/*
- *= require_tree .
- */
-
 @import "partials/*"; 
-@import "bootstrap-sprockets";
 @import "bootstrap";
 
-.nav a:visited { 
+
+
+a.btn:visited {
   color: #fff;
 }
-.nav a:hover {
-  color: #505050;
+.glyphicon {
+font-size: 2em;
+text-align: center;
 }

@@ -1,0 +1,42 @@
+<%= form_with model: @contact, local: true do |form| %>
+  <% if  @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(location.errors.count, "error") %>
+          prohibited this location from being saved:
+      </h2>
+      <ul>
+        <% @contact.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :company %>
+    <%= form.text_field :company %>
+    <br><%= form.label :first_name %>
+    <%= form.text_field :first_name %>  
+    <br><%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+    <br><%= form.label :email %>
+    <%= form.text_field :email %>
+    <br><%= form.label :work_number %>
+    <%= form.text_field :work_number %>
+    <br><%= form.label :mobile_number %>
+    <%= form.text_field :mobile_number %>
+    <br><%= form.label :work_fax %>
+    <%= form.text_field :work_fax %>
+    <br><%= form.label :home_number %>
+    <%= form.text_field :home_number %>
+    <br><%= form.label :notes %>
+    <%= form.text_area :notes %>
+
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>

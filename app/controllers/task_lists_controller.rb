@@ -1,6 +1,6 @@
 class TaskListsController < ApplicationController
 def index
-    @task_lists = current_team.task_lists.all
+    @task_lists = TaskList.all
 #   @task_lists = TaskList.where(user_id: current_user.id).or(TaskList.where(public: 1))
  end
 
@@ -46,7 +46,7 @@ def index
 
  private
    def task_list_params
-     params.require(:task_list).permit(:name, :user_id, :team_id, :public)
+     params.require(:task_list).permit(:name, :user_id, :team_id)
    end
 
 end

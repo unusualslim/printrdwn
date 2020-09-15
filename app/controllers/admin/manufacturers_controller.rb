@@ -44,7 +44,7 @@ class Admin::ManufacturersController < ApplicationController
  
    private
      def manufacturer_params
-       params.require(:manufacturer).permit(:name)
+       params.require(:manufacturer).permit(:name, :team_id)
      end
 end
 

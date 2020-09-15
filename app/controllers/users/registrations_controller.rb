@@ -10,13 +10,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
 #  end
 
   # POST /resource
-  def create
-    super do |user|
-    @team = Team.create(name: "Personal")
-    TeamMember.create(user_id: user.id, team_id: @team.id, role_id:' 1') 
-    session[:current_team] = @team
-    end
-  end
+#  def create
+#    super do |user|
+#    @team = Team.create(name: "Personal")
+#    TeamMember.create(user_id: user.id, team_id: @team.id, role_id:' 1') 
+#    session[:current_team] = @team
+#    end
+#  end
 
   # GET /resource/edit
   # def edit

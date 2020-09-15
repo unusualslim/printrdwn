@@ -48,6 +48,6 @@ class TagsController < ApplicationController
  
   private
     def tag_params
-      params.require(:tag).permit(:name)
+      params.require(:tag).permit(:name, :team_id)
     end
 end

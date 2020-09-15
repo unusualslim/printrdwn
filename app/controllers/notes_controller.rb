@@ -1,7 +1,7 @@
 class NotesController < ApplicationController   
 
   def index
-     @notes = current_team.notes.all
+     @notes = Note.all
 #    @notes = Note.where(user_id: current_user.id).or(Note.where(public: 1))
   end
 
@@ -47,6 +47,6 @@ class NotesController < ApplicationController
   private
 
   def note_params
-    params.require(:note).permit(:title,:content, :user_id, :team_id, :public)
+    params.require(:note).permit(:title,:content, :user_id, :team_id)
   end
 end

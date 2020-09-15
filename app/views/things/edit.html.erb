@@ -1,4 +1,5 @@
-
-<button class="button btn-secondary"><%= link_to 'Delete', thing_path(@thing), method: :delete %></button>
-<%= render 'form' %>
-
+<%= form_for @thing.it do |f| %>
+<%= f.submit "Save", class: "btn btn-success btn-sm" %><br>
+<%= f.label 'Name' %>
+<%= f.text_field :filename %>
+<% end %>

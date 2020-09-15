@@ -45,6 +45,6 @@ class TasksController < ApplicationController
  
   private
     def task_params
-      params.require(:task).permit(:subject, :asset_ids,  :status_id, :user_id, :description, :severity_id, :task_list_id , :location_ids => [], files: [])
+      params.require(:task).permit(:subject, :asset_ids,  :status_id, :requested_by_id, :assigned_to_id, :description, :severity_id, :task_list_id , :location_ids => [], files: [])
     end
 end
