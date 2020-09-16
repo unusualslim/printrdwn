@@ -30,7 +30,7 @@
     </td>
     <td><%= task.requested_by.email unless task.requested_by.blank? %></td>
     <td><%= task.assigned_to.email unless task.assigned_to.blank? %></td>
-    <td><%= task.comments.count %></td>
+    <td><%= task.task_comments.count %></td>
     <td><%= task.files.count %></td>
     <td><%= task.status.status unless task.status.blank? %></td>
     <td><%= task.severity.severity unless task.severity.blank? %></td>

@@ -45,7 +45,11 @@ Rails.application.routes.draw do
   end
 
   resources :tasks do 
-    resources :comments
+    resources :task_comments
+  end
+
+  resources :cases do
+    resources :case_comments
   end
 
   post "change_filename", to: "things#change_filename", as: "change_filename"

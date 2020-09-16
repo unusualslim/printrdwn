@@ -1,0 +1,2 @@
+module CaseCommentsHelper
+end

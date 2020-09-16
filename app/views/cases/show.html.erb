@@ -1,0 +1,50 @@
+
+<%= link_to 'Edit', edit_case_path(@case.id), :class => "btn btn-primary" %>
+<%= link_to 'X', case_path(@case.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+
+<p>
+  <strong>Case No.</strong>
+  <%= @case.id %>
+</p>
+<p>
+  <strong>Subject</strong>
+  <%= @case.subject %>
+</p>
+<p>
+  <strong>Locations:</strong><br>
+  <% @case.case_locations.each do  |cl| %>
+    <%= cl.location.name %><br>
+  <% end %>
+</p>
+<p>
+  <strong>Requested By</strong>
+  <%= @case.requested_by.email unless @case.requested_by.blank? %>
+</p>
+<p>
+  <strong>Assigned To</strong>
+  <%= @case.assigned_to.email unless @case.assigned_to.blank? %>
+</p>
+<p>
+  <strong>Status</strong>
+  <%= @case.status.status unless @case.status.blank? %>
+</p>
+<p>
+  <strong>Description</strong>
+  <%= @case.description %>
+</p>
+<p>
+  <strong>severity</strong>
+  <%= @case.severity.severity unless @case.status.blank? %>
+</p>
+<p>
+  <% @case.files.each do |file| %>
+    <%= link_to file.filename, rails_blob_path(file) %><br>
+  <% end %>
+</p>
+
+
+<h2>Comments</h2>
+  <%= render @case.case_comments %>
+  <%= render 'case_comments/form' %>
+
+<%= link_to 'Back', cases_path %>

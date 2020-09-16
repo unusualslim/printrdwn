@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_15_205859) do
+ActiveRecord::Schema.define(version: 2020_09_16_145626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,14 +45,40 @@ ActiveRecord::Schema.define(version: 2020_09_15_205859) do
     t.index ["location_id"], name: "index_assets_on_location_id"
   end
 
-  create_table "comments", force: :cascade do |t|
+  create_table "case_comments", force: :cascade do |t|
+    t.bigint "user_id"
     t.text "body"
-    t.bigint "task_id"
+    t.bigint "case_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["task_id"], name: "index_comments_on_task_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["case_id"], name: "index_case_comments_on_case_id"
+    t.index ["user_id"], name: "index_case_comments_on_user_id"
+  end
+
+  create_table "case_locations", force: :cascade do |t|
+    t.bigint "case_id"
+    t.bigint "location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["case_id"], name: "index_case_locations_on_case_id"
+    t.index ["location_id"], name: "index_case_locations_on_location_id"
+  end
+
+  create_table "cases", force: :cascade do |t|
+    t.string "subject"
+    t.text "description"
+    t.bigint "location_id"
+    t.bigint "status_id"
+    t.bigint "severity_id"
+    t.bigint "requested_by_id"
+    t.bigint "assigned_to_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assigned_to_id"], name: "index_cases_on_assigned_to_id"
+    t.index ["location_id"], name: "index_cases_on_location_id"
+    t.index ["requested_by_id"], name: "index_cases_on_requested_by_id"
+    t.index ["severity_id"], name: "index_cases_on_severity_id"
+    t.index ["status_id"], name: "index_cases_on_status_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -87,6 +113,7 @@ ActiveRecord::Schema.define(version: 2020_09_15_205859) do
     t.string "city"
     t.string "state"
     t.string "zip"
+    t.string "phone"
   end
 
   create_table "manufacturers", force: :cascade do |t|
@@ -137,6 +164,16 @@ ActiveRecord::Schema.define(version: 2020_09_15_205859) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "task_comments", force: :cascade do |t|
+    t.text "body"
+    t.bigint "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["task_id"], name: "index_task_comments_on_task_id"
+    t.index ["user_id"], name: "index_task_comments_on_user_id"
   end
 
   create_table "task_lists", force: :cascade do |t|
@@ -221,12 +258,21 @@ ActiveRecord::Schema.define(version: 2020_09_15_205859) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "assets", "equipment"
   add_foreign_key "assets", "locations"
-  add_foreign_key "comments", "tasks"
-  add_foreign_key "comments", "users"
+  add_foreign_key "case_comments", "cases"
+  add_foreign_key "case_comments", "users"
+  add_foreign_key "case_locations", "cases"
+  add_foreign_key "case_locations", "locations"
+  add_foreign_key "cases", "locations"
+  add_foreign_key "cases", "severities"
+  add_foreign_key "cases", "statuses"
+  add_foreign_key "cases", "users", column: "assigned_to_id"
+  add_foreign_key "cases", "users", column: "requested_by_id"
   add_foreign_key "equipment", "manufacturers"
   add_foreign_key "notes", "users"
   add_foreign_key "taggings", "assets"
   add_foreign_key "taggings", "tags"
+  add_foreign_key "task_comments", "tasks"
+  add_foreign_key "task_comments", "users"
   add_foreign_key "task_lists", "users"
   add_foreign_key "task_locations", "locations"
   add_foreign_key "task_locations", "tasks"

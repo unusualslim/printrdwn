@@ -47,7 +47,7 @@
 
 
 <h2>Comments</h2>
-  <%= render @task.comments %>
-  <%= render 'comments/form' %>
+  <%= render @task.task_comments %>
+  <%= render 'task_comments/form' %>
 
 <%= link_to 'Back', task_list_path(@task.task_list.id) %>
