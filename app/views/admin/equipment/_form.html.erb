@@ -15,14 +15,15 @@
 
   <p>
     <%= form.label :model %>
-    <%= form.text_field :model %>
+    <%= form.text_field :model, required: true %>
   </p>
   <p>
     <%= form.label :manufacturer %>
-    <%= form.collection_select :manufacturer_id, Manufacturer.all, :id, :name, prompt: true %>
+    <%= form.collection_select :manufacturer_id, Manufacturer.all, :id, :name, {:prompt => false}, {:required => true, :size => 10 } %>
    </p>
   <p>
     <%= form.submit %>
   </p>
 
 <% end %>
+

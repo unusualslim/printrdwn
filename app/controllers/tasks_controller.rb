@@ -18,7 +18,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-#      TaskMailer.with(task: @task).new_case_email.deliver_now
+ #     TaskMailer.with(task: @task).new_task_email.deliver_now
       redirect_to @task
     else
       render 'new'
@@ -29,7 +29,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
  
     if @task.update(task_params)
-#      TaskMailer.with(task: @task).update_case_email.deliver_now   
+  #    TaskMailer.with(task: @task).update_task_email.deliver_now   
       redirect_to @task
     else
       render 'edit'

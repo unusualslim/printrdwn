@@ -1,0 +1,29 @@
+<p> To view the most recent updates to this case go to: </p>
+<%= link_to @task.id, "http://printrdwn.com:3000/task/#{@task.id}" %>
+<p>
+  <strong>Case ID</strong>
+  <%= @task.id %>
+</p>
+<p>
+  <strong>Subject</strong>
+  <%= @task.subject %>
+</p>
+<p>
+  <strong>Requested By</strong>
+  <%= @task.requested_by.email unless @task.requested_by.blank? %>
+</p>
+<p>
+  <strong>Status</strong>
+  <%= @task.status.status unless @task.status.blank? %>
+</p>
+<p>
+  <strong>Description</strong>
+  <%= @task.description %>
+</p>
+<p>
+  <strong>severity</strong>
+  <%= @task.severity.severity unless @task.severity.blank? %>
+</p>
+
+<h2>Comments</h2>
+  <%= render @task.task_comments %>

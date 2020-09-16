@@ -17,3 +17,6 @@
 /yarn-error.log
 
 .byebug_history
+
+# Ignore development config
+/config/environments/development.rb

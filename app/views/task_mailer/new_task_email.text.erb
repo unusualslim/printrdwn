@@ -1,0 +1,6 @@
+ID:  <%= @task.id %>
+SUBJECT:  <%= @task.subject %> 
+REQUESTED BY:  <%= @task.requested_by.email unless @task.requested_by.blank? %>
+STATUS:  <%= @task.status.status unless @task.status.blank? %>
+SEVERITY:  <%= @task.severity.severity unless @task.severity.blank? %>
+DESCRIPTION:   <%= @task.description %>

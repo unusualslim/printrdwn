@@ -5,12 +5,14 @@
     <tr>
       <td scope="col">Title</td>
       <td scope="col">Updated</td>
+      <td scope="col" colspan="1"></td>
     </thead>
     <tbody>
       <% @notes.each do |note| %>
       <tr>
         <td><%= link_to note.title, edit_note_path(note) %></td>
         <td><%= note.updated_at %></td>
+        <td><%= link_to 'X', note_path(note), method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger btn-sm" %></td>
       </tr>
       <% end %>
     </tbody>

@@ -28,7 +28,7 @@ def index
   def update
     @contact = Contact.find(params[:id])
 
-    if @contact.update(Contact_params)
+    if @contact.update(contact_params)
       redirect_to @contact
     else
       render 'edit'
@@ -39,7 +39,7 @@ def index
     @contact = Contact.find(params[:id])
     @contact.destroy
 
-    redirect_to Contactes_path
+    redirect_to contacts_path
   end
 
   private

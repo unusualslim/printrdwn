@@ -39,7 +39,7 @@ class Admin::EquipmentController < ApplicationController
     @equipment = Equipment.find(params[:id])
     @equipment.destroy
  
-    redirect_to equipment_path
+    redirect_to admin_equipment_index_path
   end
  
   private

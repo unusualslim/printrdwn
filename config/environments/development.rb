@@ -45,7 +45,7 @@ Rails.application.configure do
 	:port =>			587,
 	:domain =>			'mg.printrdwn.com',
 	:user_name =>			'postmaster@mg.printrdwn.com',
-	:password =>			'2b4878c4346249fcff9e82fae35c0f28-4167c382-d03e2e71',
+	:password =>			'45f588d489f988dd01a29f72c2aac4d0-d5e69b0b-a0c4a02d',
 	:authentication =>		'plain'	
   }
 

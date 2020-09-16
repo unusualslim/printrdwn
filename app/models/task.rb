@@ -6,7 +6,7 @@ class Task < ApplicationRecord
   belongs_to :task_list
 
   has_many :task_locations
-  has_many :locations, through: :task_locations
+  has_many :locations, through: :task_locations, dependent: :destroy
   
   has_many :task_comments, dependent: :destroy
  

@@ -4,7 +4,7 @@
    <thead>
    <tr>
     <th scope="col">Name </th>
-    <th scope="col" colspan="1"></th>
+    <th scope="col" colspan="2"></th>
   </tr>
   <thead>
 
@@ -13,6 +13,7 @@
     <tr scope="row">
       <td><%= link_to manufacturer.name, admin_manufacturer_path(manufacturer) %></td>
       <td><%= link_to 'edit', edit_admin_manufacturer_path(manufacturer) %></td>
+      <td><%= link_to 'X', admin_manufacturer_path(manufacturer), method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger btn-sm" %></td>
     </tr>
   <% end %>
   </tbody>

@@ -15,7 +15,7 @@
       <th scope="col">Attachments</th>
       <th scope="col">Status</th>
       <th scope="col">Severity</th>
-      <th scope="col" colspan="1"></th>
+      <th scope="col" colspan="2"></th>
     </tr>
   </thead>
 
@@ -35,6 +35,7 @@
     <td><%= task.status.status unless task.status.blank? %></td>
     <td><%= task.severity.severity unless task.severity.blank? %></td>
     <td><%= link_to 'Edit', edit_task_path(task) %></td>
+    <td><%= link_to 'X', task_path(task), method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger btn-sm" %></td>
   </tr>
   <% end %>
   </tbody>

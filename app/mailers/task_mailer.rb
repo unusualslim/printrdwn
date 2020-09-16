@@ -3,12 +3,12 @@ class TaskMailer < ApplicationMailer
 
   def new_task_email
     @task = params[:task]   
-    mail(to: @task.user.email, bcc: 'support@perrybrothersoil.com',  subject: 'You have created a new Support Case')
+    mail(to: @task.requested_by.email, bcc: 'support@perrybrothersoil.com',  subject: 'You have created a new task')
   end
 
-  def update_case_email
+  def update_task_email
     @task = params[:task]
-    mail(to: @task.user.email, subject: 'Your Support Case has been Updated')
+    mail(to: @task.requested_by.email, subject: 'Your task has been Updated')
   end
 
 end
