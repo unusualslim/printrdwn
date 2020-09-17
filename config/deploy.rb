@@ -1,14 +1,22 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.14.1"
 
-set :application, "my_app_name"
-set :repo_url, "git@example.com:me/my_repo.git"
+server '161.35.248.160', port: 22, roles: [:web, :app, :db], primary: true
+
+set :application,	"livelyteams"
+set :repo_url,		"https://github.com/unusualslim/livelyteams.git"
+set :user,		'deploy'
+set :puma_threads,	[4,16]
+set :puma_workers,	0
+set :rbenv_ruby,	'2.5.2'
+
+set :linked_files, 	%w{config/master.key}
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, "/var/www/my_app_name"
+set :deploy_to, "~/apps/livelyteams"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
@@ -37,3 +45,15 @@ set :repo_url, "git@example.com:me/my_repo.git"
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+namespace :deploy do
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
+    end
+  end
+end
