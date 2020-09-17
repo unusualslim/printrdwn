@@ -14,7 +14,7 @@
   <% end %>
   <p>
     Attachment:
-    <%= form.file_field :it, required: true %>
+    <%= form.file_field :files, {required: true, multiple: true, class: "form-control"} %>
     .jpg .gif .png .mp4 .doc .docx .ppt .pptx .xls .xlsx .pdf
   </p>
   <p>

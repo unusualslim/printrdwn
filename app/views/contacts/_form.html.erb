@@ -15,28 +15,28 @@
 
   <p>
     <%= form.label :company %>
-    <%= form.text_field :company %>
+    <%= form.text_field :company, {class: "form-control"} %>
     <br><%= form.label :first_name %>
-    <%= form.text_field :first_name %>  
+    <%= form.text_field :first_name, {class: "form-control"} %>  
     <br><%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+    <%= form.text_field :last_name, {class: "form-control"} %>
     <br><%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, {class: "form-control"} %>
     <br><%= form.label :work_number %>
-    <%= form.text_field :work_number %>
+    <%= form.text_field :work_number, {class: "form-control"} %>
     <br><%= form.label :mobile_number %>
-    <%= form.text_field :mobile_number %>
+    <%= form.text_field :mobile_number, {class: "form-control"} %>
     <br><%= form.label :work_fax %>
-    <%= form.text_field :work_fax %>
+    <%= form.text_field :work_fax , {class: "form-control"} %>
     <br><%= form.label :home_number %>
-    <%= form.text_field :home_number %>
+    <%= form.text_field :home_number, {class: "form-control"} %>
     <br><%= form.label :notes %>
-    <%= form.text_area :notes %>
+    <%= form.text_area :notes, {class: "form-control"} %>
 
   </p>
 
   <p>
-    <%= form.submit %>
+    <%= form.submit "Create Contact", {class: "btn btn-success"} %>
   </p>
 
 <% end %>

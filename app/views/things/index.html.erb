@@ -8,48 +8,22 @@
       <th scope="col">Date Modified</th>
       <th scope="col">Size</th>
       <th scope="col">Type</th>
-      <th scope="col"></th>
+      <th scope="col" colspan="2"></th>
     <tr>
   </thead>
   <tbody>  
     <% @things.each do |thing| %>
+    <% thing.files.each do |f| %>
       <tr>
-    
-<!--      <td>
-          <% case thing.it.content_type
-            when "image/png" %>
-              <%= image_tag((thing.it.variant(resize: "100x100") if thing.it.attached?),  :class => "thing-img") %>
-            <% when "image/jpeg" %>
-              <%= image_tag((thing.it.variant(resize: "100x100") if thing.it.attached?),  :class => "thing-img") %>
-            <% when "image/gif" %>
-              <%= image_tag((thing.it.variant(resize: "100x100") if thing.it.attached?),  :class => "thing-img") %>
-            <% when "video/mp4" %>
-              <%= video_tag((url_for(thing.it) if thing.it.attached?), class:"thing-img") %>
-            <% when "application/pdf" %>
-              <%= image_tag((thing.it.blob.preview(resize: "100x100") if thing.it.blob.previewable?), :class => "thing-img") %>
-            <% when "application/msword" %>
-              <%= image_tag((thing.it.blob.preview(resize: "100x100") if thing.it.blob.previewable?), :class => "thing-img") %>
-            <% when "application/vnd.openxmlformats-officedocument.wordprocessingml.document" %>
-              <%= image_tag((thing.it.blob.preview(resize: "100x100") if thing.it.blob.previewable?), :class => "thing-img") %>
-            <% when "application/vnd.ms-excel" %>
-              <%= image_tag((thing.it.blob.preview(resize: "100x100") if thing.it.blob.previewable?), :class => "thing-img") %>
-            <% when "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" %>
-              <%= image_tag((thing.it.blob.preview(resize: "100x100") if thing.it.blob.previewable?), :class => "thing-img") %>
-            <% when "application/vnd.ms-powerpoint" %>
-              <%= image_tag((thing.it.blob.preview(resize: "100x100") if thing.it.blob.previewable?), :class => "thing-img") %>
-            <% when "application/vnd.openxmlformats-officedocument.presentationml.presentation" %>
-              <%= image_tag((thing.it.blob.preview(resize: "100x100") if thing.it.blob.previewable?), :class => "thing-img") %>
-            <% else %>
-          <% end %>
-        </td>
- -->
-        <td><%= link_to thing.it.filename, rails_blob_path(thing.it) %></td>
+        <td><%= link_to f.filename, rails_blob_path(f) %></td>
         <td><%= thing.updated_at.strftime("%b %e, %Y at %l:%M %P") %></td>
-        <td><%= number_to_human_size(thing.it.byte_size) %></td>
-        <td><%= thing.it.content_type %></td>
+        <td><%= number_to_human_size(f.byte_size) %></td>
+        <td><%= f.content_type %></td>
         <td><%# link_to 'Rename', edit_thing_path(thing) %></td>
-        <td><%= link_to 'Download', rails_blob_path(thing.it, disposition: "attachment") %></td>
-       </tr>      
+        <td><%= link_to 'Download', rails_blob_path(f, disposition: "attachment") %></td>
+        <td><%# link_to 'X', rails_blob_path(f), method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger btn-sm" %> 
+      </tr>      
+    <% end %>
     <% end %>
   </tbody>
 </table>

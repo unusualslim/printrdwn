@@ -43,13 +43,13 @@ class ThingsController < ApplicationController
     redirect_to things_path
   end
   
-  def change_filename
-    attachment = ActiveStorage::Attachment.find(attachment_id)
-    attachment.blob.update!(filename: 'new_filename.pdf')
-  end
+#  def change_filename
+#    attachment = ActiveStorage::Attachment.find(attachment_id)
+#    attachment.blob.update!(filename: 'new_filename.pdf')
+#  end
 
   private
     def thing_params
-      params.require(:thing).permit(:user_id)
+      params.require(:thing).permit(:user_id, files: [] )
     end
   end

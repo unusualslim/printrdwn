@@ -41,7 +41,7 @@ def index
    @task_list = TaskList.find(params[:id])
    @task_list.destroy
 
-   redirect_to task_list_path
+   redirect_to task_lists_path
  end
 
  private

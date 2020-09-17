@@ -1,5 +1,7 @@
 class Thing < ApplicationRecord
-  has_one_attached :it
+  has_many_attached :files
+
+  validates :files, presence: true
 
 #  belongs_to :team
 end
