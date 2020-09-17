@@ -8,7 +8,7 @@ end
 
 gem 'rails', '~> 5.2', '>= 5.2.1'
 gem 'pg', '~> 0.18'
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.12'
 gem 'bootsnap', '~> 1.3', '>= 1.3.1'
 gem 'bootstrap', '~> 4.5.2'
 # gem 'sass-rails', '>= 3.2'
