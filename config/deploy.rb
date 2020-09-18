@@ -2,14 +2,14 @@
 
 set :application,	'livelyteams'
 set :repo_url,		'https://github.com/unusualslim/livelyteams'
-set :user,		'dev'
 set :puma_threads,	[4,16]
 set :puma_workers, 	0
 set :rbenv_ruby, 	'2.6.5'
+set :rails_env, 'production'
 
-set :linked_files, %w{config/master.key}
+append :linked_files, "config/master.key"
 
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+# append :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
@@ -45,15 +45,15 @@ set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rben
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-namespace :deploy do
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+namespace :deploy do
+  namespace :check do
+    before :linked_files, :set_master_key do
+      on roles(:app), in: :sequence, wait: 10 do
+        unless test("[ -f #{shared_path}/config/master.key ]")
+          upload! 'config/master.key', "#{shared_path}/config/master.key"
+        end
+      end
     end
   end
-
 end
