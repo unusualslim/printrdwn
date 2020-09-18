@@ -82,6 +82,6 @@ test:
 #
 production:
   <<: *default
-  database: printerdown_production
-  username: printerdown
-  password: <%= ENV['PRINTERDOWN_DATABASE_PASSWORD'] %>
+  database: livelyteams_production
+  username: deploy
+  password: testing_123
