@@ -2,7 +2,7 @@
 
 set :application,	'livelyteams'
 set :repo_url,		'https://github.com/unusualslim/livelyteams'
-set :user,		'deploy'
+set :user,		'dev'
 set :puma_threads,	[4,16]
 set :puma_workers, 	0
 set :rbenv_ruby, 	'2.5.2'
@@ -13,7 +13,7 @@ set :linked_files, %w{config/master.key}
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '~/apps/livelyteams'
+set :deploy_to, '/home/dev/apps/livelyteams'
 
 # Default value for :scm is :git
 # set :scm, :git
