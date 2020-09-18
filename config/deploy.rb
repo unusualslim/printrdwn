@@ -5,7 +5,7 @@ set :repo_url,		'https://github.com/unusualslim/livelyteams'
 set :user,		'dev'
 set :puma_threads,	[4,16]
 set :puma_workers, 	0
-set :rbenv_ruby, 	'2.5.2'
+set :rbenv_ruby, 	'2.6.5'
 
 set :linked_files, %w{config/master.key}
 

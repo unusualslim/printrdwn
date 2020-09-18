@@ -7,7 +7,7 @@ set :stage, :production
 set :rails_env, :production
 set :branch, "master"
 
-server '161.35.248.160', port: 22, roles: %w{app db web}, primary: true
+server 'livelyteams.com', port: 22, roles: %w{app db web}, primary: true
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
