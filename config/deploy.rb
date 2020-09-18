@@ -5,6 +5,7 @@ set :repo_url,		'https://github.com/unusualslim/livelyteams'
 set :puma_threads,	[4,16]
 set :puma_workers, 	0
 set :rbenv_ruby, 	'2.6.5'
+set :rails_env,         'production'
 
 append :linked_files, "config/master.key"
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
@@ -60,7 +61,9 @@ namespace :deploy do
       end
     end
   end
-  
+end  
+
+namespace :deploy do
   namespace :check do
     before :linked_files, :set_master_key do
       on roles(:app), in: :sequence, wait: 10 do
@@ -76,3 +79,13 @@ end
 
 
 
+namespace :deploy do
+  desc 'Restart application'
+  task :restart do
+    on roles(:app) do
+      execute "#{fetch(:rbenv_prefix)} pumactl -P ~/app/current/tmp/pids/puma.pid phased-restart"
+    end
+  end
+end
+
+after 'deploy:publishing', 'deploy:restart'

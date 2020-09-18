@@ -4,7 +4,6 @@
 # You can define all roles on a single server, or split them:
 
 set :stage, :production
-set :rails_env, "production"
 set :branch, "master"
 
 server 'livelyteams.com', user: "dev", port: 22, roles: %w{app db web}, primary: true
