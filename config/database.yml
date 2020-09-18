@@ -84,4 +84,4 @@ production:
   <<: *default
   database: livelyteams_production
   username: deploy
-  password: testing_123
+  password: <%= Rails.application.credentials.dig(:production_db_key) %>
