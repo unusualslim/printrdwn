@@ -21,6 +21,10 @@ set :rbenv_type, :user # or :system, depends on your rbenv setup
 set :rbenv_ruby, File.read('.ruby-version').strip
 set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 
+set :default_env, {
+   PATH: '$HOME/.npm-packages/bin/:$PATH',
+   NODE_ENVIRONMENT: 'production'
+}
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -46,8 +50,18 @@ set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rben
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+before "deploy:assets:precompile", "deploy:yarn_install"
 
 namespace :deploy do
+  desc 'Run rake yarn:install'
+  task :yarn_install do
+    on roles(:web) do
+      within release_path do
+        execute("cd #{release_path} && yarn install")
+      end
+    end
+  end
+  
   namespace :check do
     before :linked_files, :set_master_key do
       on roles(:app), in: :sequence, wait: 10 do
@@ -57,4 +71,9 @@ namespace :deploy do
       end
     end
   end
+
+
 end
+
+
+
