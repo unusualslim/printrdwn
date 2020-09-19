@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  
-
-  root :to => "cases#index"
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+root :to => "cases#index"
 
   get "pages/:page" => "pages#show"   
   devise_for :users, controllers: {
@@ -54,5 +53,7 @@ Rails.application.routes.draw do
 
   post "change_filename", to: "things#change_filename", as: "change_filename"
 #  post "set_current_team", to: "teams#set_current_team", as: 'set_current_team' 
+
+
 
 end
