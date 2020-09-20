@@ -77,7 +77,7 @@ set :default_env, {
 #    end
 #  end
 
-append :linked_files, "config/master.key"
+append :linked_files, "config/database.yml", "config/credentials.yml.enc", "config/master.key", ".env"
 
 namespace :deploy do
   namespace :check do

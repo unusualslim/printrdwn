@@ -42,7 +42,7 @@ group :development do
   gem 'capistrano-rails',        require: false
   gem 'capistrano-bundler',      require: false
   gem 'capistrano3-puma', github: "seuros/capistrano-puma"
-
+  gem 'highline'
 
 
   gem 'web-console', '>= 3.3.0'
@@ -54,3 +54,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'dotenv-rails'
