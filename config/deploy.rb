@@ -62,6 +62,16 @@ set :rbenv_roles, :all # default value
 # set :keep_releases, 5
 
 # before "deploy:assets:precompile", "deploy:yarn_install"
+namespace :deploy do    
+  desc 'Symlinks config files for Nginx.'
+  task :nginx_symlink do
+    on roles(:app) do
+      execute "rm -f /etc/nginx/sites-enabled/default"
+
+      execute "sudo ln -nfs #{current_path}/config/nginx.rb /etc/nginx/sites-enabled/#{fetch(:domain)}"
+      execute "sudo ln -nfs   /config/nginx.rb /etc/nginx/sites-available/#{fetch(:domain)}"
+   end
+end
 
 # namespace :deploy do
 #  desc 'Run rake yarn:install'
