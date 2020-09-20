@@ -3,12 +3,14 @@ Rails.application.routes.draw do
   root :to => "cases#index"
 
   get "pages/:page" => "pages#show"   
-  devise_for :users, controllers: {
-        registrations: 'users/registrations'
-      }
+
+
+#  devise_for :users, controllers: {
+ #       registrations: 'users/registrations'
+  #    }
 
   devise_scope :user do 
-    root to: 'pages#index'
+#    root to: 'pages#index'
     match '/sessions/user', to: 'devise/sessions#create', via: :post
   end
 

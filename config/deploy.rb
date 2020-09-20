@@ -7,7 +7,7 @@ set :puma_workers, 	0
 set :rbenv_ruby, 	'2.6.5'
 set :rails_env,         'production'
 
-append :linked_files, "config/master.key"
+append :linked_files, 'config/master.key'
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
 
 # append :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
