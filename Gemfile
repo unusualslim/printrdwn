@@ -9,7 +9,8 @@ ruby '2.6.5'
 
 gem 'rails', '~> 6.0.2.2'
 gem 'pg', '~> 0.18'
-gem 'puma', '~> 3.7'
+#gem 'puma', '~> 3.7'
+gem 'puma', '~> 4.3', '>= 4.3.1'
 gem 'bootsnap', '~> 1.3', '>= 1.3.1'
 gem 'bootstrap', '~> 4.5.2'
 # gem 'sass-rails', '>= 3.2'
@@ -36,11 +37,12 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'capistrano',              require: false
+  gem 'capistrano', "~> 3.14",   require: false
   gem 'capistrano-rbenv',        require: false
   gem 'capistrano-rails',        require: false
   gem 'capistrano-bundler',      require: false
-  gem 'capistrano3-puma',        require: false
+  gem 'capistrano3-puma', github: "seuros/capistrano-puma"
+
 
 
   gem 'web-console', '>= 3.3.0'
