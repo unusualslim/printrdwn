@@ -6,9 +6,10 @@ set :puma_threads,	[4,16]
 set :puma_workers, 	0
 set :rbenv_ruby, 	'2.6.5'
 set :rails_env,         'production'
+set :migration_role, :app
 
-append :linked_files, 'config/master.key'
-append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
+#append :linked_files, 'config/master.key'
+#append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
 
 # append :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 # Default branch is :master
@@ -50,18 +51,31 @@ set :default_env, {
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-before "deploy:assets:precompile", "deploy:yarn_install"
+# before "deploy:assets:precompile", "deploy:yarn_install"
 
-namespace :deploy do
-  desc 'Run rake yarn:install'
-  task :yarn_install do
-    on roles(:web) do
-      within release_path do
-        execute("cd #{release_path} && yarn install")
-      end
-    end
-  end
-end  
+# namespace :deploy do
+#  desc 'Run rake yarn:install'
+#  task :yarn_install do
+ #   on roles(:web) do
+#      within release_path do
+#        execute("cd #{release_path} && yarn install")
+#     end
+#    end
+#  end
+#end  
+
+# namespace :deploy do
+#  namespace :check do
+#    before :linked_files, :set_master_key do
+##      on roles(:app), in: :sequence, wait: 10 do
+#        unless test("[ -f #{shared_path}/config/master.key ]")
+#          upload! 'config/master.key', "#{shared_path}/config/master.key"
+#        end
+#      end
+#    end
+#  end
+
+append :linked_files, "config/master.key"
 
 namespace :deploy do
   namespace :check do
@@ -73,19 +87,19 @@ namespace :deploy do
       end
     end
   end
-
+end
 
 end
 
 
 
-namespace :deploy do
-  desc 'Restart application'
-  task :restart do
-    on roles(:app) do
-      execute "#{fetch(:rbenv_prefix)} pumactl -P ~/app/current/tmp/pids/puma.pid phased-restart"
-    end
-  end
-end
+#namespace :deploy do
+#  desc 'Restart application'
+#  task :restart do
+#    on roles(:app) do
+#      execute "#{fetch(:rbenv_prefix)} pumactl -P ~/app/current/tmp/pids/puma.pid phased-restart"
+#    end
+#  end
+#end
 
-after 'deploy:publishing', 'deploy:restart'
+#after 'deploy:publishing', 'deploy:restart'
