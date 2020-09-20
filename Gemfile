@@ -8,6 +8,7 @@ end
 ruby '2.6.5'
 
 gem 'rails', '~> 6.0.2.2'
+gem "activesupport", ">= 6.0.3.1"
 gem 'pg', '~> 0.18'
 #gem 'puma', '~> 3.7'
 gem 'puma', '~> 4.3', '>= 4.3.1'
