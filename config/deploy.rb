@@ -2,13 +2,16 @@
 
 set :application,	'livelyteams'
 set :repo_url,		'https://github.com/unusualslim/livelyteams'
-set :puma_threads,	[4,16]
-set :puma_workers, 	0
+#set :puma_threads,	[4,16]
+#set :puma_workers, 	0
 set :rbenv_ruby, 	'2.6.5'
 set :rails_env,         'production'
 set :migration_role, :app
-set :puma_init_active_record, true
+#set :puma_init_active_record, true
 
+set :passenger_environment_variables, { :path => '/path-to-passenger/bin:$PATH' }
+set :passenger_restart_command, '/path-to-passenger/bin/passenger-config restart-app'
+#append :rbenv_map_bins, %w{rake gem bundle ruby rails puma pumactl}
 
 #append :linked_files, 'config/master.key'
 #append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
@@ -77,8 +80,10 @@ set :puma_init_active_record, true
 #    end
 #  end
 
-append :linked_dirs, 'tmp/pids', 'tmp/sockets', 'log'
-append :linked_files, "config/database.yml", "config/credentials.yml.enc", "config/master.key", ".env"
+
+append :linked_files, fetch(:linked_files, []).push("config/database.yml", "config/credentials.yml.enc", "config/master.key")
+
+append :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
 namespace :deploy do
   namespace :check do
