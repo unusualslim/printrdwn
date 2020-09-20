@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
   root :to => "cases#index"
+
+  devise_for :users
 
   get "pages/:page" => "pages#show"   
 
@@ -9,10 +12,10 @@ Rails.application.routes.draw do
  #       registrations: 'users/registrations'
   #    }
 
-  devise_scope :user do 
+#  devise_scope :user do 
 #    root to: 'pages#index'
-    match '/sessions/user', to: 'devise/sessions#create', via: :post
-  end
+#    match '/sessions/user', to: 'devise/sessions#create', via: :post
+#  end
 
   resources :admin, only: [:index] 
   resources :assets, only: [:index, :show]

@@ -16,7 +16,7 @@ set :migration_role, :app
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/dev/apps/livelyteams'
+# set :deploy_to, '/home/dev/apps/livelyteams'
 
 set :rbenv_type, :user # or :system, depends on your rbenv setup
 set :rbenv_ruby, File.read('.ruby-version').strip
@@ -89,7 +89,7 @@ namespace :deploy do
   end
 end
 
-end
+#end
 
 
 
