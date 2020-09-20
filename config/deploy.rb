@@ -20,14 +20,14 @@ set :puma_init_active_record, true
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, '/home/dev/apps/livelyteams'
 
-set :rbenv_type, :user # or :system, depends on your rbenv setup
-set :rbenv_ruby, File.read('.ruby-version').strip
-set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+#set :rbenv_type, :user # or :system, depends on your rbenv setup
+#set :rbenv_ruby, File.read('.ruby-version').strip
+#set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
 
-set :default_env, {
-   PATH: '$HOME/.npm-packages/bin/:$PATH',
-   NODE_ENVIRONMENT: 'production'
-}
+#set :default_env, {
+#   PATH: '$HOME/.npm-packages/bin/:$PATH',
+#   NODE_ENVIRONMENT: 'production'
+#}
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -77,6 +77,7 @@ set :default_env, {
 #    end
 #  end
 
+append :linked_dirs, 'tmp/pids', 'tmp/sockets', 'log'
 append :linked_files, "config/database.yml", "config/credentials.yml.enc", "config/master.key", ".env"
 
 namespace :deploy do
