@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   get "pages/:page" => "pages#show"   
 
+   devise_scope :user do 
+    match '/sessions/user', to: 'devise/sessions#create', via: :post
+  end
 
 #  devise_for :users, controllers: {
  #       registrations: 'users/registrations'

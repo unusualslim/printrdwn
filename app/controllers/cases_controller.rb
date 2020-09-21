@@ -17,7 +17,7 @@ class CasesController < ApplicationController
   def create
     @case = Case.new(case_params)
     if @case.save
-#      CaseMailer.with(Case: @case).new_case_email.deliver_now
+      CaseMailer.new_case_email(@case).deliver_later
       redirect_to @case
     else
       render 'new'
@@ -28,7 +28,7 @@ class CasesController < ApplicationController
     @case = Case.find(params[:id])
  
     if @case.update(case_params)
-#      CaseMailer.with(Case: @case).update_case_email.deliver_now   
+      CaseMailer.update_case_email(@case).deliver_later   
       redirect_to @case
     else
       render 'edit'

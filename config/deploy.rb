@@ -11,8 +11,8 @@ set :rails_env,         'production'
 set :migration_role, :app
 #set :puma_init_active_record, true
 
-#set :passenger_environment_variables, { :path => '/path-to-passenger/bin:$PATH' }
-#set :passenger_restart_command, '/path-to-passenger/bin/passenger-config restart-app'
+set :passenger_environment_variables, { :path => '/home/dev/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/passenger-6.0.6/bin:$PATH' }
+set :passenger_restart_command, '/home/dev/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/passenger-6.0.6/bin/passenger-config restart-app'
 #append :rbenv_map_bins, %w{rake gem bundle ruby rails puma pumactl}
 
 #append :linked_files, 'config/master.key'
@@ -72,7 +72,7 @@ namespace :deploy do
       execute "sudo ln -nfs   /config/nginx.rb /etc/nginx/sites-available/#{fetch(:domain)}"
    end
 end
-
+end
 # namespace :deploy do
 #  desc 'Run rake yarn:install'
 #  task :yarn_install do

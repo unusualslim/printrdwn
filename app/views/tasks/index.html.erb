@@ -19,7 +19,10 @@
       <td><%= link_to task.id, task_path(task) %></td>
       <td><%= link_to task.task_list.name, task_list_path(task.task_list.id) %></td>
       <td><%= task.subject %></td>
-      <td><%= link_to task.location.name, location_path(task.location.id) %></td> 
+      <td><% task.task_locations.each do |tl| %>
+          <%= tl.location.short_name %>,
+        <% end %>
+      </td>
     </tr>
   <% end %>
   </tbody>

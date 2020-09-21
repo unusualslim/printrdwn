@@ -1,14 +1,14 @@
 class TaskMailer < ApplicationMailer
-  default from: 'notifcations@printrdwn.com'
+  default from: 'notifcations@livelyteams.com'
 
-  def new_task_email
-    @task = params[:task]   
-    mail(to: @task.requested_by.email, bcc: 'support@perrybrothersoil.com',  subject: 'You have created a new task')
+  def new_task_email(task)
+    @task = task   
+    mail(to: [@task.requested_by.email, @task.assigned_to.email],  subject: 'You have created a new task')
   end
 
-  def update_task_email
-    @task = params[:task]
-    mail(to: @task.requested_by.email, subject: 'Your task has been Updated')
+  def update_task_email(task)
+    @task = task
+    mail(to: [@task.requested_by.email, @task.assigned_to.email], subject: 'Your task has been Updated')
   end
 
 end

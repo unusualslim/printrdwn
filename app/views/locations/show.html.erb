@@ -3,14 +3,14 @@
   <%= @location.city %>, <%= @location.state %> <%= @location.zip %>
    <br> <%= link_to @location.phone, "tel:#{@location.phone}" %> 
 </p>
-<h2>Tasks</h2>
+<h2>Casess</h2>
 <table class="table table-striped table-hover table-responsive">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Task List</th>
       <th scope="col">Subject</th>
       <th scope="col">Requested By</th>
+      <th scope="col">Assigned To</th>
       <th scope="col">Status</th>
       <th scope="col">Severity</th>
       <th scope="col" colspan="1"></th>
@@ -18,16 +18,15 @@
   </thead>
 
   <tbody>
-  <% @location_tasks.each do |task| %>
+  <% @location.case_locations.each do |task| %>
     <tr scope="row">
       <td><%= link_to task.id, task_path(task) %></td>
-      <td><%= task.task_list.name %>
-      <td><%= link_to task.task_list.name, task_list_path(task.task_list.id) %></td>
-      <td><%= task.subject %></td>
-      <td><%= task.user.email unless task.user.blank? %></td>
-      <td><%= task.status.status unless task.status.blank? %></td>
-      <td><%= task.severity.severity unless task.severity.blank? %></td>
-      <td><%= link_to 'Edit', edit_task_path(task) %></td>
+      <td><%= task.case.subject %></td>
+      <td><%= task.case.requested_by.email unless task.case.requested_by.blank? %></td>
+      <td><%= task.case.assigned_to.email unless task.case.assigned_to.blank? %></td>
+      <td><%= task.case.status.status unless task.case.status.blank? %></td>
+      <td><%= task.case.severity.severity unless task.case.severity.blank? %></td>
+      <td><%= link_to 'Edit', edit_case_path(task.case) %></td>
     </tr>
   <% end %>
   </tbody>

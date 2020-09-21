@@ -1,9 +1,19 @@
-p> To view the most recent updates to this case go to: </p>
+<p> To view the most recent updates to this case go to: </p>
 <%= link_to @case.id, "http://printrdwn.com:3000/cases/#{@case.id}" %>
 <p>
   <strong>Case ID</strong>
   <%= @case.id %>
 </p>
+<p>
+  <strong>Location(s):</strong><br>
+  <% @case.case_locations.each do  |cl| %>
+  <%= cl.location.name %><br>
+  <%= link_to cl.location.phone, "tel:#{cl.location.phone}"  %><br>
+  <%= cl.location.address1 %> <%= cl.location.address2 %><br>
+  <%= cl.location.city %>, <%= cl.location.state %> <%= cl.location.zip %>
+  <% end %>
+</p>
+
 <p>
   <strong>Subject</strong>
   <%= @case.subject %>
