@@ -110,6 +110,20 @@ namespace :deploy do
         end
       end
     end
+    before :linked_files, :set_database_yml do
+      on roles(:app), in: :sequence, wait: 10 do
+        unless test("[ -f #{shared_path}/config/database.yml ]")
+          upload! 'config/database.yml', "#{shared_path}/config/database.yml"
+        end
+      end
+    end
+    before :linked_files, :set_credentials_yml do
+      on roles(:app), in: :sequence, wait: 10 do
+        unless test("[ -f #{shared_path}/config/credentials.yml.enc ]")
+          upload! 'config/credentials.yml.enc', "#{shared_path}/config/credentials.yml.enc"
+        end
+      end
+    end
   end
 end
 

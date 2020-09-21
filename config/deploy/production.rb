@@ -19,10 +19,9 @@
 # group is considered to be the first unless any hosts have the primary
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
-
-role :app, %w{dev@livelyteams.com}
-role :web, %w{dev@livelyteams.com}
-role :db,  %w{dev@livelyteams.com}
+role :app, %w{dev@68.183.154.197}
+role :web, %w{dev@68.183.154.197}
+role :db,  %w{dev@68.183.154.197}
 
 
 
