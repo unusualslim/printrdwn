@@ -2,6 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.hosts << "livelyteams.com"
   config.hosts << "157.230.53.99" 
+  config.hosts << "174.138.125.184"
   # Code is not reloaded between requests.
   config.cache_classes = true
 
