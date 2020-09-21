@@ -11,8 +11,8 @@ set :rails_env,         'production'
 set :migration_role, :app
 #set :puma_init_active_record, true
 
-set :passenger_environment_variables, { :path => '/home/dev/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/passenger-6.0.6/bin:$PATH' }
-set :passenger_restart_command, '/home/dev/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/passenger-6.0.6/bin/passenger-config restart-app'
+set :passenger_environment_variables, { :path => '/usr/bin:$PATH' }
+set :passenger_restart_command, '/usr/bin/passenger-config restart-app'
 #append :rbenv_map_bins, %w{rake gem bundle ruby rails puma pumactl}
 
 #append :linked_files, 'config/master.key'
@@ -31,6 +31,11 @@ set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rben
 set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 set :rbenv_roles, :all # default value
 #set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+
+set :default_env, {
+   PATH: '$HOME/.npm-packages/bin/:$PATH',
+   NODE_ENVIRONMENT: 'production'
+}
 
 #set :default_env, {
 #   PATH: '$HOME/.npm-packages/bin/:$PATH',
