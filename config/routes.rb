@@ -7,9 +7,9 @@ Rails.application.routes.draw do
 
   get "pages/:page" => "pages#show"   
 
-   devise_scope :user do 
-    match '/sessions/user', to: 'devise/sessions#create', via: :post
-  end
+#   devise_scope :user do 
+#    match '/sessions/user', to: 'devise/sessions#create', via: :post
+#  end
 
   resources :admin, only: [:index] 
   resources :assets, only: [:index, :show]
