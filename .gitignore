@@ -19,7 +19,7 @@
 .byebug_history
 
 # Ignore development config
-/config/environments/development.rb
+/config/environment/development.rb
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key

@@ -6,7 +6,7 @@
       <th scope="col">Case No.</th>
       <th scope="col">Subject</th>
       <th scope="col">Locations</th>
-      <th scope="col">Requested By</th>
+<!--      <th scope="col">Requested By</th>-->
       <th scope="col">Assigned To</th>
       <th scope="col">Comments</th>
       <th scope="col">Attachments</th>
@@ -25,7 +25,7 @@
           <%= tl.location.short_name %>,
         <% end %>
     </td>
-    <td><%= c.requested_by.email unless c.requested_by.blank? %></td>
+   <!-- <td><%# c.requested_by.email unless c.requested_by.blank? %></td>-->
     <td><%= c.assigned_to.email unless c.assigned_to.blank? %></td>
     <td><%= c.case_comments.count %></td>
     <td><%= c.files.count %></td>
