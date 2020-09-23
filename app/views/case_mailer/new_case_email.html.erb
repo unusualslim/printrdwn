@@ -1,9 +1,11 @@
-<p> To view the most recent updates to this case go to: </p>
-<%= link_to @case.id, "http://printrdwn.com:3000/cases/#{@case.id}" %>
-<p>
-  <strong>Case ID</strong>
-  <%= @case.id %>
+<p> To view the most recent updates to this case go to: <br>
+<strong><%= link_to "Case No. #{@case.id}", "#{root_url}cases/#{@case.id}" %></strong>
 </p>
+<p>
+  <strong>Subject:</strong>
+  <%= @case.subject %>
+</p>
+
 <p>
   <strong>Location(s):</strong><br>
   <% @case.case_locations.each do  |cl| %>
@@ -14,25 +16,18 @@
   <% end %>
 </p>
 
-<p>
-  <strong>Subject</strong>
-  <%= @case.subject %>
-</p>
+
 <p>
   <strong>Requested By</strong>
   <%= @case.requested_by.email unless @case.requested_by.blank? %>
 </p>
 <p>
-  <strong>Status</strong>
+  <strong>Status:</strong>
   <%= @case.status.status unless @case.status.blank? %>
 </p>
 <p>
-  <strong>Description</strong>
+  <strong>Description:</strong>
   <%= @case.description %>
-</p>
-<p>
-  <strong>severity</strong>
-  <%= @case.severity.severity unless @case.severity.blank? %>
 </p>
 
 <h2>Comments</h2>
