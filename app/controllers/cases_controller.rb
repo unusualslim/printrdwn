@@ -1,7 +1,8 @@
 class CasesController < ApplicationController
   
   def index
-    @cases = Case.all
+    @open_cases = Case.where(status: 1)
+    @closed_cases = Case.where(status: 3)
   end
   def show
     @case = Case.find(params[:id]) 
@@ -18,7 +19,7 @@ class CasesController < ApplicationController
   def create
     @case = Case.new(case_params)
     if @case.save
-      CaseMailer.new_case_email(@case).deliver_now
+      CaseMailer.new_case_email(@case).deliver_later
       redirect_to @case
     else
       render 'new'
@@ -29,7 +30,7 @@ class CasesController < ApplicationController
     @case = Case.find(params[:id])
  
     if @case.update(case_params)
-      CaseMailer.update_case_email(@case).deliver_now   
+      CaseMailer.update_case_email(@case).deliver_later   
       redirect_to @case
     else
       render 'edit'
