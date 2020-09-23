@@ -80,7 +80,7 @@ Rails.application.configure do
  :port =>			587,
  :domain =>			'mg.livelyteams.com',
  :user_name =>			'postmaster@mg.livelyteams.com',
- password:			<%= Rails.application.credentials.dig(:mailgun_smtp_key) %>
+ :password =>			Rails.application.credentials.dig(:mailgun_smtp_key)
  :authentication =>		'plain'	
  }
   # Ignore bad email addresses and do not raise email delivery errors.
