@@ -1,7 +1,7 @@
 class CasesController < ApplicationController
   
   def index
-    @open_cases = Case.where(status: 1)
+    @open_cases = Case.where.not(status:  3)
     @closed_cases = Case.where(status: 3)
   end
   def show
