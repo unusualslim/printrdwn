@@ -10,6 +10,10 @@
   <strong>Subject</strong>
   <%= @case.subject %>
 </p>
+<p><strong>Created On:</strong> <%= @case.created_at.strftime("%B %d, %Y")  %></br>
+   <strong>Last updated:</strong> <%= @case.updated_at.strftime("%B %d, %Y")  %></br>
+</p>
+
 <p>
   <strong>Locations:</strong><br>
   <% @case.case_locations.each do  |cl| %>

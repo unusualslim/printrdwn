@@ -83,7 +83,7 @@
       <th scope="col">Comments</th>
       <th scope="col">Attachments</th>
       <th scope="col">Status</th>
-      <th scope="col">Severity</th>
+      <th scope="col">Closed On</th>
       <th scope="col" colspan="2"></th>
     </tr>
   </thead>
@@ -102,7 +102,7 @@
     <td><%= c.case_comments.count %></td>
     <td><%= c.files.count %></td>
     <td><%= c.status.status unless c.status.blank? %></td>
-    <td><%= c.severity.severity unless c.severity.blank? %></td>
+    <td><%= c.updated_at.strftime("%B %d, %Y") %></td>
     <td><%= link_to 'Edit', edit_case_path(c) %></td>
     <td><%= link_to 'X', case_path(c), method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger btn-sm" %></td>
   </tr>
