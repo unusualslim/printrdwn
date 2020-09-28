@@ -3,7 +3,7 @@
 <%= link_to 'New Case', new_case_path, :class => "btn btn-primary" %>  
 <input id="gfg" type="text" placeholder="Search here"> 
       
-<table class="table table-striped table-hover table-responsive">
+<table class="table table-responsive">
   <thead>
     <tr>
       <th scope="col">Case No.</th>
@@ -15,14 +15,22 @@
       <th scope="col">Attachments</th>
       <th scope="col">Status</th>
       <th scope="col">Severity</th>
+      <th scope="col">Created On</th>
       <th scope="col" colspan="2"></th>
     </tr>
   </thead>
 
   <tbody id="geeks">
   <% @open_cases.each do |c| %>
-  <tr scope="row" class=<%= "table-danger" if c.severity.severity == 'Urgent' %>>
-    <td><%= link_to c.id, case_path(c) %></td>
+  <% case  c.severity.severity
+    when "Urgent" %>
+      <tr scope="row" class="table-danger">
+    <% when "Low"  %>
+      <tr scope="row" class="table-secondary">
+    <% else %>
+      <tr scope="row" class="table-white">
+  <% end %>
+    <td><%= link_to c.id, case_path(c), :class => "btn btn-primary" %></td>
     <td><%= c.subject %></td>
     <td><% c.case_locations.each do |tl| %>
           <%= link_to tl.location.short_name, location_path(tl.location), :class => "btn btn-info" %>
@@ -32,8 +40,17 @@
     <td><%= c.assigned_to.email unless c.assigned_to.blank? %></td>
     <td><%= c.case_comments.count %></td>
     <td><%= c.files.count %></td>
-    <td><%= c.status.status unless c.status.blank? %></td>
+    <% case c.status.status
+      when 'Open' %>
+        <td><span class="dot"></span><%= c.status.status unless c.status.blank? %></td>
+      <% when 'In progress' %>
+        <td><span class="spinner-border spinner-border-sm"></span> <%= c.status.status unless c.status.blank? %></td>
+      <% when 'Complete: Billable' %>
+        <td><span class="badge badge-success"><%= c.status.status unless c.status.blank? %></span></td>
+    <% end %>
+
     <td><%= c.severity.severity unless c.severity.blank? %></td>
+    <td><%= c.created_at.strftime("%B %d, %Y")  %></td>
     <td><%= link_to 'Edit', edit_case_path(c) %></td>
     <td><%= link_to 'X', case_path(c), method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger btn-sm" %></td>
   </tr>
@@ -50,7 +67,8 @@
                     }); 
                 }); 
             }); 
-        </script> 
+</script> 
+
 
 <h2>Closed Cases</h2>
 <%# link_to 'New Case', new_case_path, :class => "btn btn-primary" %>
@@ -73,10 +91,10 @@
   <tbody>
   <% @closed_cases.each do |c| %>
   <tr scope="row" class=<%= "table-success" if c.status.status == 'Closed' %>>
-    <td><%= link_to c.id, case_path(c) %></td>
+    <td><%= link_to c.id, case_path(c), :class => "btn btn-primary" %></td>
     <td><%= c.subject %></td>
     <td><% c.case_locations.each do |tl| %>
-          <%= tl.location.short_name %>,
+          <%= link_to tl.location.short_name, location_path(tl.location), :class => "btn btn-info" %>
         <% end %>
     </td>
    <!-- <td><%# c.requested_by.email unless c.requested_by.blank? %></td>-->
