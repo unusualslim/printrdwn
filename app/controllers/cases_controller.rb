@@ -1,8 +1,8 @@
 class CasesController < ApplicationController
   
   def index
-    @open_cases = Case.where.not(status:  3)
-    @closed_cases = Case.where(status: 3)
+    @open_cases = Case.where.not(status:  3).sort_by &:created_at
+    @closed_cases = Case.where(status: 3).sort.reverse &:updated_at
   end
   def show
     @case = Case.find(params[:id]) 
