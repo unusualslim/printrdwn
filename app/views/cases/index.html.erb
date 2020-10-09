@@ -94,7 +94,7 @@
     <td><%= link_to c.id, case_path(c), :class => "btn btn-primary" %></td>
     <td><%= c.subject %></td>
     <td><% c.case_locations.each do |tl| %>
-          <%= link_to tl.location.short_name, location_path(tl.location), :class => "btn btn-info" %>
+          <%= link_to "#{tl.location.short_name} (#{tl.location.city})", location_path(tl.location), :class => "btn btn-info" %>
         <% end %>
     </td>
    <!-- <td><%# c.requested_by.email unless c.requested_by.blank? %></td>-->
