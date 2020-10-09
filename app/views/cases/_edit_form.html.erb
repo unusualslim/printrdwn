@@ -1,0 +1,52 @@
+<%= form_for @case do |form| %>
+  <% if @case.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@case.errors.count, "error") %> prohibited
+        this Case from being saved:
+      </h2>
+      <ul>
+        <% @case.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+   <div class="form-group">
+     <%= form.submit "Save", :class => "btn btn-success" %>
+   </div>
+
+   <div class="form-group">
+    <%= form.label :subject %>
+    <%= form.text_field :subject, {required: true, class: "form-control"} %>
+   </div>
+   <div class="form-group">
+     <%= form.label "Locations" %>
+     <%= form.collection_select :location_ids, Location.order(:name), :id, :name,{:prompt => false}, {:multiple => true, :size => 10, :required => true, class: "form-control" } %>
+   </div>
+   <div class="form-group">
+     <%= form.label :severity %>
+     <%= form.collection_select :severity_id, Severity.all, :id, :severity, {:prompt => false}, {class: "form-control"} %>
+   </div>
+   <div class="form-group">
+    <%= form.label :status %>
+    <%= form.collection_select :status_id, Status.all, :id, :status, {:prompt => false}, {class: "form-control"} %>
+  </div>
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :attachments %>
+    <%= form.file_field :files, {multiple: true, class: "form-control"} %>
+  </div>
+  <div class="form-group">
+    <%= form.label :requested_by %>
+    <%= form.collection_select :requested_by_id, User.all, :id, :email, {:prompt => false}, {class: "form-control"} %>
+  </div>
+  <div class="form-group">
+    <%= form.label :assigned_to %>
+    <%= form.collection_select :assigned_to_id, User.all, :id, :email, {:prompt => false}, {class: "form-control"} %>
+  </div>
+
+<% end %>

@@ -1,4 +1,4 @@
-
+<%= link_to '<', cases_path, :class => "btn btn-secondary" %>
 <%= link_to 'Edit', edit_case_path(@case.id), :class => "btn btn-primary" %>
 <%= link_to 'X', case_path(@case.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
 
@@ -51,4 +51,3 @@
   <%= render @case.case_comments %>
   <%= render 'case_comments/form' %>
 
-<%= link_to 'Back', cases_path %>
