@@ -1,5 +1,5 @@
 
-<h2>Open Cases</h2>
+<h2>Open Cases (<%= @open_cases.count %>)</h2>
 <%= link_to 'New Case', new_case_path, :class => "btn btn-primary" %>  
 <input id="gfg" type="text" placeholder="Search here"> 
       
@@ -38,8 +38,8 @@
     </td>
    <!-- <td><%# c.requested_by.email unless c.requested_by.blank? %></td>-->
     <td><%= c.assigned_to.email unless c.assigned_to.blank? %></td>
-    <td><%= c.case_comments.count %></td>
-    <td><%= c.files.count %></td>
+    <td><span class="badge badge-dark"><%= c.case_comments.count %></span></td>
+    <td><span class="badge badge-dark"><%= c.files.count %></span></td>
     <% case c.status.status
       when 'Open' %>
         <td><span class="dot"></span><%= c.status.status unless c.status.blank? %></td>
