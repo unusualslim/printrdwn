@@ -70,6 +70,46 @@
 </script> 
 
 
+<h2>Billable Cases</h2>
+<%# link_to 'New Case', new_case_path, :class => "btn btn-primary" %>
+<table class="table table-striped table-hover table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">Case No.</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Locations</th>
+<!--      <th scope="col">Requested By</th>-->
+      <th scope="col">Assigned To</th>
+      <th scope="col">Comments</th>
+      <th scope="col">Attachments</th>
+      <th scope="col">Status</th>
+      <th scope="col">Closed On</th>
+      <th scope="col" colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @billable_cases.each do |c| %>
+  <tr scope="row" class=<%= "table-success" if c.status.status == 'Closed' %>>
+    <td><%= link_to c.id, case_path(c), :class => "btn btn-primary" %></td>
+    <td><%= c.subject %></td>
+    <td><% c.case_locations.each do |tl| %>
+          <%= link_to "#{tl.location.short_name} (#{tl.location.city})", location_path(tl.location), :class => "btn btn-info" %>
+        <% end %>
+    </td>
+   <!-- <td><%# c.requested_by.email unless c.requested_by.blank? %></td>-->
+    <td><%= c.assigned_to.email unless c.assigned_to.blank? %></td>
+    <td><%= c.case_comments.count %></td>
+    <td><%= c.files.count %></td>
+    <td><span class="badge badge-success"><%= c.status.status unless c.status.blank? %></span></td>
+    <td><%= c.updated_at.strftime("%B %d, %Y") %></td>
+    <td><%= link_to 'Edit', edit_case_path(c) %></td>
+    <td><%= link_to 'X', case_path(c), method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger btn-sm" %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
 <h2>Closed Cases</h2>
 <%# link_to 'New Case', new_case_path, :class => "btn btn-primary" %>
 <table class="table table-striped table-hover table-responsive">
