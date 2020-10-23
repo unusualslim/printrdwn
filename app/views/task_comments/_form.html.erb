@@ -1,9 +1,9 @@
 <%= form_with(model: [ @task, @task.task_comments.build ]) do |f| %>
-  <p>
-    <%= f.text_area :body %>
-  </p>
+  <div class="form-group">
+    <%= f.text_area :body, :class => "form-control", :rows => 2, :cols => 1 %>
+  </div>
     <%= f.hidden_field :user_id, value: current_user.id %>
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Add Comment', class: "btn btn-primary" %>
   </p>
 <% end %>

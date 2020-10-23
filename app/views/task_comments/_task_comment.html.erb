@@ -1,3 +1,6 @@
 
-<p> <%= task_comment.body %><br>
--<%= task_comment.user.email unless task_comment.user.blank? %></p>
+<div class="alert alert-primary mb-0"><%= task_comment.body %></div>
+<div>-<%= task_comment.user.email unless task_comment.user.blank? %></div>
+
+
+
