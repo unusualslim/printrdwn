@@ -49,6 +49,10 @@ Rails.application.routes.draw do
 
   resources :cases do
     resources :case_comments
+    collection do
+      get 'closed'
+      get 'billable'
+    end
   end
 
 #  post "change_filename", to: "things#change_filename", as: "change_filename"

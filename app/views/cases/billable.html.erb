@@ -1,7 +1,7 @@
 <%= link_to 'Open Cases', cases_path %>
 <%= link_to 'Billable Cases', billable_cases_path %>
 <%= link_to 'Closed Cases', closed_cases_path %>
-<h2>Open Cases (<%= @open_cases.count %>)</h2>
+<h2>Billable Cases (<%= @billable_cases.count %>)</h2>
 <%= link_to 'New Case', new_case_path, :class => "btn btn-primary" %>  
 <input id="gfg" type="text" placeholder="Search here"> 
       
@@ -23,7 +23,7 @@
   </thead>
 
   <tbody id="geeks">
-  <% @open_cases.each do |c| %>
+  <% @billable_cases.each do |c| %>
   <% case  c.severity.severity
     when "Urgent" %>
       <tr scope="row" class="table-danger">

@@ -31334,3 +31334,332 @@ Entrypoint application = js/application-876d1de039599cfce93c.js js/application-8
   INFO [f4df2b11] Running /usr/bin/env echo "Branch master (at cc02351c9ab5d933df3effd1c812ec98a56a4392) deployed as release 20201018212414 by dev" >> /var/www/livelyteams/revisions.log as dev@174.138.125.184
  DEBUG [f4df2b11] Command: cd /var/www/livelyteams/releases && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env echo "Branch master (at cc02351c9ab5d933df3effd1c812ec98a56a4392) deployed as release 20201018212414 by dev" >> /var/www/livelyteams/revisions.log )
   INFO [f4df2b11] Finished in 0.049 seconds with exit status 0 (successful).
+  INFO ---------------------------------------------------------------------------
+  INFO START 2020-10-23 09:46:12 -0400 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [116dff4c] Running [ -d $HOME/.rbenv/versions/2.6.5 ] as dev@174.138.125.184
+ DEBUG [116dff4c] Command: [ -d $HOME/.rbenv/versions/2.6.5 ]
+ DEBUG [116dff4c] Finished in 1.631 seconds with exit status 0 (successful).
+ DEBUG [8222742b] Running /usr/bin/env which passenger as dev@174.138.125.184
+ DEBUG [8222742b] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" ; /usr/bin/env which passenger )
+ DEBUG [8222742b] 	/usr/bin/passenger
+ DEBUG [8222742b] Finished in 0.065 seconds with exit status 0 (successful).
+  INFO [e05c9e6a] Running /usr/bin/env mkdir -p /tmp as dev@174.138.125.184
+ DEBUG [e05c9e6a] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env mkdir -p /tmp )
+  INFO [e05c9e6a] Finished in 0.064 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-livelyteams-production-dev.sh 0.0%
+  INFO Uploading /tmp/git-ssh-livelyteams-production-dev.sh 100.0%
+  INFO [135e38a1] Running /usr/bin/env chmod 700 /tmp/git-ssh-livelyteams-production-dev.sh as dev@174.138.125.184
+ DEBUG [135e38a1] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env chmod 700 /tmp/git-ssh-livelyteams-production-dev.sh )
+  INFO [135e38a1] Finished in 0.066 seconds with exit status 0 (successful).
+  INFO [a02af1d6] Running /usr/bin/env git ls-remote https://github.com/unusualslim/livelyteams HEAD as dev@174.138.125.184
+ DEBUG [a02af1d6] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-livelyteams-production-dev.sh" ; /usr/bin/env git ls-remote https://github.com/unusualslim/livelyteams HEAD )
+ DEBUG [a02af1d6] 	339800e299839920d98c315a10260a638202cdfe	HEAD
+  INFO [a02af1d6] Finished in 0.374 seconds with exit status 0 (successful).
+  INFO [6b266ec8] Running /usr/bin/env mkdir -p /var/www/livelyteams/shared /var/www/livelyteams/releases as dev@174.138.125.184
+ DEBUG [6b266ec8] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env mkdir -p /var/www/livelyteams/shared /var/www/livelyteams/releases )
+  INFO [6b266ec8] Finished in 0.052 seconds with exit status 0 (successful).
+  INFO [bb35a2cc] Running /usr/bin/env mkdir -p /var/www/livelyteams/shared/log /var/www/livelyteams/shared/tmp/pids /var/www/livelyteams/shared/tmp/cache /var/www/livelyteams/shared/tmp/sockets /var/www/livelyteams/shared/vendor/bundle /var/www/livelyteams/shared/public/system /var/www/livelyteams/shared/public/uploads /var/www/livelyteams/shared/public/assets as dev@174.138.125.184
+ DEBUG [bb35a2cc] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env mkdir -p /var/www/livelyteams/shared/log /var/www/livelyteams/shared/tmp/pids /var/www/livelyteams/shared/tmp/cache /var/www/livelyteams/shared/tmp/sockets /var/www/livelyteams/shared/vendor/bundle /var/www/livelyteams/shared/public/system /var/www/livelyteams/shared/public/uploads /var/www/livelyteams/shared/public/assets )
+  INFO [bb35a2cc] Finished in 0.050 seconds with exit status 0 (successful).
+  INFO [906c8c06] Running /usr/bin/env mkdir -p /var/www/livelyteams/shared/config as dev@174.138.125.184
+ DEBUG [906c8c06] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env mkdir -p /var/www/livelyteams/shared/config )
+  INFO [906c8c06] Finished in 0.059 seconds with exit status 0 (successful).
+ DEBUG [33c2f9cf] Running [ -f /var/www/livelyteams/shared/config/master.key ] as dev@174.138.125.184
+ DEBUG [33c2f9cf] Command: [ -f /var/www/livelyteams/shared/config/master.key ]
+ DEBUG [33c2f9cf] Finished in 0.044 seconds with exit status 0 (successful).
+ DEBUG [9f0a76a0] Running [ -f /var/www/livelyteams/shared/config/master.key ] as dev@174.138.125.184
+ DEBUG [9f0a76a0] Command: [ -f /var/www/livelyteams/shared/config/master.key ]
+ DEBUG [9f0a76a0] Finished in 0.046 seconds with exit status 0 (successful).
+ DEBUG [ce2d59ba] Running [ -f /var/www/livelyteams/shared/config/database.yml ] as dev@174.138.125.184
+ DEBUG [ce2d59ba] Command: [ -f /var/www/livelyteams/shared/config/database.yml ]
+ DEBUG [ce2d59ba] Finished in 0.047 seconds with exit status 0 (successful).
+ DEBUG [dd4ca359] Running [ -f /var/www/livelyteams/shared/config/credentials.yml.enc ] as dev@174.138.125.184
+ DEBUG [dd4ca359] Command: [ -f /var/www/livelyteams/shared/config/credentials.yml.enc ]
+ DEBUG [dd4ca359] Finished in 0.048 seconds with exit status 0 (successful).
+ DEBUG [11cbb554] Running [ -f /var/www/livelyteams/shared/config/database.yml ] as dev@174.138.125.184
+ DEBUG [11cbb554] Command: [ -f /var/www/livelyteams/shared/config/database.yml ]
+ DEBUG [11cbb554] Finished in 0.048 seconds with exit status 0 (successful).
+ DEBUG [d40ebc96] Running [ -f /var/www/livelyteams/shared/config/master.key ] as dev@174.138.125.184
+ DEBUG [d40ebc96] Command: [ -f /var/www/livelyteams/shared/config/master.key ]
+ DEBUG [d40ebc96] Finished in 0.047 seconds with exit status 0 (successful).
+ DEBUG [320e8b9f] Running [ -f /var/www/livelyteams/shared/config/credentials.yml.enc ] as dev@174.138.125.184
+ DEBUG [320e8b9f] Command: [ -f /var/www/livelyteams/shared/config/credentials.yml.enc ]
+ DEBUG [320e8b9f] Finished in 0.048 seconds with exit status 0 (successful).
+ DEBUG [4628b677] Running [ -f /var/www/livelyteams/current/REVISION ] as dev@174.138.125.184
+ DEBUG [4628b677] Command: [ -f /var/www/livelyteams/current/REVISION ]
+ DEBUG [4628b677] Finished in 0.046 seconds with exit status 0 (successful).
+ DEBUG [f1e27eac] Running /usr/bin/env cat /var/www/livelyteams/current/REVISION 2>/dev/null as dev@174.138.125.184
+ DEBUG [f1e27eac] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env cat /var/www/livelyteams/current/REVISION 2>/dev/null )
+ DEBUG [f1e27eac] 	cc02351c9ab5d933df3effd1c812ec98a56a4392
+ DEBUG [f1e27eac] Finished in 0.052 seconds with exit status 0 (successful).
+ DEBUG [84276b63] Running [ -f /var/www/livelyteams/repo/HEAD ] as dev@174.138.125.184
+ DEBUG [84276b63] Command: [ -f /var/www/livelyteams/repo/HEAD ]
+ DEBUG [84276b63] Finished in 0.046 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /var/www/livelyteams/repo
+ DEBUG [a393da02] Running if test ! -d /var/www/livelyteams/repo; then echo "Directory does not exist '/var/www/livelyteams/repo'" 1>&2; false; fi as dev@174.138.125.184
+ DEBUG [a393da02] Command: if test ! -d /var/www/livelyteams/repo; then echo "Directory does not exist '/var/www/livelyteams/repo'" 1>&2; false; fi
+ DEBUG [a393da02] Finished in 0.047 seconds with exit status 0 (successful).
+  INFO [5b035752] Running /usr/bin/env git remote set-url origin https://github.com/unusualslim/livelyteams as dev@174.138.125.184
+ DEBUG [5b035752] Command: cd /var/www/livelyteams/repo && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-livelyteams-production-dev.sh" ; /usr/bin/env git remote set-url origin https://github.com/unusualslim/livelyteams )
+  INFO [5b035752] Finished in 0.054 seconds with exit status 0 (successful).
+  INFO [dd7df277] Running /usr/bin/env git remote update --prune as dev@174.138.125.184
+ DEBUG [dd7df277] Command: cd /var/www/livelyteams/repo && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-livelyteams-production-dev.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [dd7df277] 	Fetching origin
+ DEBUG [dd7df277] 	From https://github.com/unusualslim/livelyteams
+   cc02351c..339800e2  master     -> master
+  INFO [dd7df277] Finished in 0.907 seconds with exit status 0 (successful).
+ DEBUG [185d6673] Running if test ! -d /var/www/livelyteams/repo; then echo "Directory does not exist '/var/www/livelyteams/repo'" 1>&2; false; fi as dev@174.138.125.184
+ DEBUG [185d6673] Command: if test ! -d /var/www/livelyteams/repo; then echo "Directory does not exist '/var/www/livelyteams/repo'" 1>&2; false; fi
+ DEBUG [185d6673] Finished in 0.050 seconds with exit status 0 (successful).
+  INFO [3a51a420] Running /usr/bin/env mkdir -p /var/www/livelyteams/releases/20201023134615 as dev@174.138.125.184
+ DEBUG [3a51a420] Command: cd /var/www/livelyteams/repo && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-livelyteams-production-dev.sh" ; /usr/bin/env mkdir -p /var/www/livelyteams/releases/20201023134615 )
+  INFO [3a51a420] Finished in 0.050 seconds with exit status 0 (successful).
+  INFO [8f9a834e] Running /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/livelyteams/releases/20201023134615 as dev@174.138.125.184
+ DEBUG [8f9a834e] Command: cd /var/www/livelyteams/repo && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-livelyteams-production-dev.sh" ; /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/livelyteams/releases/20201023134615 )
+  INFO [8f9a834e] Finished in 3.490 seconds with exit status 0 (successful).
+ DEBUG [e55733a5] Running if test ! -d /var/www/livelyteams/repo; then echo "Directory does not exist '/var/www/livelyteams/repo'" 1>&2; false; fi as dev@174.138.125.184
+ DEBUG [e55733a5] Command: if test ! -d /var/www/livelyteams/repo; then echo "Directory does not exist '/var/www/livelyteams/repo'" 1>&2; false; fi
+ DEBUG [e55733a5] Finished in 0.057 seconds with exit status 0 (successful).
+ DEBUG [9600cf89] Running /usr/bin/env git rev-list --max-count=1 master as dev@174.138.125.184
+ DEBUG [9600cf89] Command: cd /var/www/livelyteams/repo && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-livelyteams-production-dev.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [9600cf89] 	339800e299839920d98c315a10260a638202cdfe
+ DEBUG [9600cf89] Finished in 0.055 seconds with exit status 0 (successful).
+ DEBUG [890e373d] Running if test ! -d /var/www/livelyteams/releases/20201023134615; then echo "Directory does not exist '/var/www/livelyteams/releases/20201023134615'" 1>&2; false; fi as dev@174.138.125.184
+ DEBUG [890e373d] Command: if test ! -d /var/www/livelyteams/releases/20201023134615; then echo "Directory does not exist '/var/www/livelyteams/releases/20201023134615'" 1>&2; false; fi
+ DEBUG [890e373d] Finished in 0.047 seconds with exit status 0 (successful).
+  INFO [010a2df8] Running /usr/bin/env echo "339800e299839920d98c315a10260a638202cdfe" > REVISION as dev@174.138.125.184
+ DEBUG [010a2df8] Command: cd /var/www/livelyteams/releases/20201023134615 && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env echo "339800e299839920d98c315a10260a638202cdfe" > REVISION )
+  INFO [010a2df8] Finished in 0.050 seconds with exit status 0 (successful).
+  INFO [60627a18] Running /usr/bin/env mkdir -p /var/www/livelyteams/releases/20201023134615/config as dev@174.138.125.184
+ DEBUG [60627a18] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env mkdir -p /var/www/livelyteams/releases/20201023134615/config )
+  INFO [60627a18] Finished in 0.051 seconds with exit status 0 (successful).
+ DEBUG [d7029a94] Running [ -L /var/www/livelyteams/releases/20201023134615/config/database.yml ] as dev@174.138.125.184
+ DEBUG [d7029a94] Command: [ -L /var/www/livelyteams/releases/20201023134615/config/database.yml ]
+ DEBUG [d7029a94] Finished in 0.050 seconds with exit status 1 (failed).
+ DEBUG [b4b3caab] Running [ -f /var/www/livelyteams/releases/20201023134615/config/database.yml ] as dev@174.138.125.184
+ DEBUG [b4b3caab] Command: [ -f /var/www/livelyteams/releases/20201023134615/config/database.yml ]
+ DEBUG [b4b3caab] Finished in 0.050 seconds with exit status 1 (failed).
+  INFO [3c2ba569] Running /usr/bin/env ln -s /var/www/livelyteams/shared/config/database.yml /var/www/livelyteams/releases/20201023134615/config/database.yml as dev@174.138.125.184
+ DEBUG [3c2ba569] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env ln -s /var/www/livelyteams/shared/config/database.yml /var/www/livelyteams/releases/20201023134615/config/database.yml )
+  INFO [3c2ba569] Finished in 0.053 seconds with exit status 0 (successful).
+ DEBUG [9ed8819f] Running [ -L /var/www/livelyteams/releases/20201023134615/config/master.key ] as dev@174.138.125.184
+ DEBUG [9ed8819f] Command: [ -L /var/www/livelyteams/releases/20201023134615/config/master.key ]
+ DEBUG [9ed8819f] Finished in 0.049 seconds with exit status 1 (failed).
+ DEBUG [32fcb7c0] Running [ -f /var/www/livelyteams/releases/20201023134615/config/master.key ] as dev@174.138.125.184
+ DEBUG [32fcb7c0] Command: [ -f /var/www/livelyteams/releases/20201023134615/config/master.key ]
+ DEBUG [32fcb7c0] Finished in 0.047 seconds with exit status 1 (failed).
+  INFO [45c11da6] Running /usr/bin/env ln -s /var/www/livelyteams/shared/config/master.key /var/www/livelyteams/releases/20201023134615/config/master.key as dev@174.138.125.184
+ DEBUG [45c11da6] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env ln -s /var/www/livelyteams/shared/config/master.key /var/www/livelyteams/releases/20201023134615/config/master.key )
+  INFO [45c11da6] Finished in 0.050 seconds with exit status 0 (successful).
+ DEBUG [df945159] Running [ -L /var/www/livelyteams/releases/20201023134615/config/credentials.yml.enc ] as dev@174.138.125.184
+ DEBUG [df945159] Command: [ -L /var/www/livelyteams/releases/20201023134615/config/credentials.yml.enc ]
+ DEBUG [df945159] Finished in 0.049 seconds with exit status 1 (failed).
+ DEBUG [19a6d2f3] Running [ -f /var/www/livelyteams/releases/20201023134615/config/credentials.yml.enc ] as dev@174.138.125.184
+ DEBUG [19a6d2f3] Command: [ -f /var/www/livelyteams/releases/20201023134615/config/credentials.yml.enc ]
+ DEBUG [19a6d2f3] Finished in 0.048 seconds with exit status 1 (failed).
+  INFO [b6aa46a6] Running /usr/bin/env ln -s /var/www/livelyteams/shared/config/credentials.yml.enc /var/www/livelyteams/releases/20201023134615/config/credentials.yml.enc as dev@174.138.125.184
+ DEBUG [b6aa46a6] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env ln -s /var/www/livelyteams/shared/config/credentials.yml.enc /var/www/livelyteams/releases/20201023134615/config/credentials.yml.enc )
+  INFO [b6aa46a6] Finished in 0.050 seconds with exit status 0 (successful).
+  INFO [ff301ed5] Running /usr/bin/env mkdir -p /var/www/livelyteams/releases/20201023134615 /var/www/livelyteams/releases/20201023134615/tmp /var/www/livelyteams/releases/20201023134615/vendor /var/www/livelyteams/releases/20201023134615/public as dev@174.138.125.184
+ DEBUG [ff301ed5] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env mkdir -p /var/www/livelyteams/releases/20201023134615 /var/www/livelyteams/releases/20201023134615/tmp /var/www/livelyteams/releases/20201023134615/vendor /var/www/livelyteams/releases/20201023134615/public )
+  INFO [ff301ed5] Finished in 0.050 seconds with exit status 0 (successful).
+ DEBUG [0dea6ff7] Running [ -L /var/www/livelyteams/releases/20201023134615/log ] as dev@174.138.125.184
+ DEBUG [0dea6ff7] Command: [ -L /var/www/livelyteams/releases/20201023134615/log ]
+ DEBUG [0dea6ff7] Finished in 0.049 seconds with exit status 1 (failed).
+ DEBUG [0467b3ab] Running [ -d /var/www/livelyteams/releases/20201023134615/log ] as dev@174.138.125.184
+ DEBUG [0467b3ab] Command: [ -d /var/www/livelyteams/releases/20201023134615/log ]
+ DEBUG [0467b3ab] Finished in 0.047 seconds with exit status 0 (successful).
+  INFO [43befe47] Running /usr/bin/env rm -rf /var/www/livelyteams/releases/20201023134615/log as dev@174.138.125.184
+ DEBUG [43befe47] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env rm -rf /var/www/livelyteams/releases/20201023134615/log )
+  INFO [43befe47] Finished in 0.051 seconds with exit status 0 (successful).
+  INFO [be488f7f] Running /usr/bin/env ln -s /var/www/livelyteams/shared/log /var/www/livelyteams/releases/20201023134615/log as dev@174.138.125.184
+ DEBUG [be488f7f] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env ln -s /var/www/livelyteams/shared/log /var/www/livelyteams/releases/20201023134615/log )
+  INFO [be488f7f] Finished in 0.050 seconds with exit status 0 (successful).
+ DEBUG [ff6c42cf] Running [ -L /var/www/livelyteams/releases/20201023134615/tmp/pids ] as dev@174.138.125.184
+ DEBUG [ff6c42cf] Command: [ -L /var/www/livelyteams/releases/20201023134615/tmp/pids ]
+ DEBUG [ff6c42cf] Finished in 0.048 seconds with exit status 1 (failed).
+ DEBUG [ec02498f] Running [ -d /var/www/livelyteams/releases/20201023134615/tmp/pids ] as dev@174.138.125.184
+ DEBUG [ec02498f] Command: [ -d /var/www/livelyteams/releases/20201023134615/tmp/pids ]
+ DEBUG [ec02498f] Finished in 0.048 seconds with exit status 1 (failed).
+  INFO [4ecc4bf7] Running /usr/bin/env ln -s /var/www/livelyteams/shared/tmp/pids /var/www/livelyteams/releases/20201023134615/tmp/pids as dev@174.138.125.184
+ DEBUG [4ecc4bf7] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env ln -s /var/www/livelyteams/shared/tmp/pids /var/www/livelyteams/releases/20201023134615/tmp/pids )
+  INFO [4ecc4bf7] Finished in 0.049 seconds with exit status 0 (successful).
+ DEBUG [78ea7961] Running [ -L /var/www/livelyteams/releases/20201023134615/tmp/cache ] as dev@174.138.125.184
+ DEBUG [78ea7961] Command: [ -L /var/www/livelyteams/releases/20201023134615/tmp/cache ]
+ DEBUG [78ea7961] Finished in 0.049 seconds with exit status 1 (failed).
+ DEBUG [33736f83] Running [ -d /var/www/livelyteams/releases/20201023134615/tmp/cache ] as dev@174.138.125.184
+ DEBUG [33736f83] Command: [ -d /var/www/livelyteams/releases/20201023134615/tmp/cache ]
+ DEBUG [33736f83] Finished in 0.048 seconds with exit status 0 (successful).
+  INFO [d236b3e4] Running /usr/bin/env rm -rf /var/www/livelyteams/releases/20201023134615/tmp/cache as dev@174.138.125.184
+ DEBUG [d236b3e4] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env rm -rf /var/www/livelyteams/releases/20201023134615/tmp/cache )
+  INFO [d236b3e4] Finished in 0.403 seconds with exit status 0 (successful).
+  INFO [2777f768] Running /usr/bin/env ln -s /var/www/livelyteams/shared/tmp/cache /var/www/livelyteams/releases/20201023134615/tmp/cache as dev@174.138.125.184
+ DEBUG [2777f768] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env ln -s /var/www/livelyteams/shared/tmp/cache /var/www/livelyteams/releases/20201023134615/tmp/cache )
+  INFO [2777f768] Finished in 0.051 seconds with exit status 0 (successful).
+ DEBUG [f4b6a63e] Running [ -L /var/www/livelyteams/releases/20201023134615/tmp/sockets ] as dev@174.138.125.184
+ DEBUG [f4b6a63e] Command: [ -L /var/www/livelyteams/releases/20201023134615/tmp/sockets ]
+ DEBUG [f4b6a63e] Finished in 0.049 seconds with exit status 1 (failed).
+ DEBUG [dbbeb17e] Running [ -d /var/www/livelyteams/releases/20201023134615/tmp/sockets ] as dev@174.138.125.184
+ DEBUG [dbbeb17e] Command: [ -d /var/www/livelyteams/releases/20201023134615/tmp/sockets ]
+ DEBUG [dbbeb17e] Finished in 0.046 seconds with exit status 1 (failed).
+  INFO [e0121d76] Running /usr/bin/env ln -s /var/www/livelyteams/shared/tmp/sockets /var/www/livelyteams/releases/20201023134615/tmp/sockets as dev@174.138.125.184
+ DEBUG [e0121d76] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env ln -s /var/www/livelyteams/shared/tmp/sockets /var/www/livelyteams/releases/20201023134615/tmp/sockets )
+  INFO [e0121d76] Finished in 0.051 seconds with exit status 0 (successful).
+ DEBUG [387aee29] Running [ -L /var/www/livelyteams/releases/20201023134615/vendor/bundle ] as dev@174.138.125.184
+ DEBUG [387aee29] Command: [ -L /var/www/livelyteams/releases/20201023134615/vendor/bundle ]
+ DEBUG [387aee29] Finished in 0.048 seconds with exit status 1 (failed).
+ DEBUG [c5ed8fbe] Running [ -d /var/www/livelyteams/releases/20201023134615/vendor/bundle ] as dev@174.138.125.184
+ DEBUG [c5ed8fbe] Command: [ -d /var/www/livelyteams/releases/20201023134615/vendor/bundle ]
+ DEBUG [c5ed8fbe] Finished in 0.048 seconds with exit status 1 (failed).
+  INFO [00067678] Running /usr/bin/env ln -s /var/www/livelyteams/shared/vendor/bundle /var/www/livelyteams/releases/20201023134615/vendor/bundle as dev@174.138.125.184
+ DEBUG [00067678] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env ln -s /var/www/livelyteams/shared/vendor/bundle /var/www/livelyteams/releases/20201023134615/vendor/bundle )
+  INFO [00067678] Finished in 0.050 seconds with exit status 0 (successful).
+ DEBUG [dd146fb2] Running [ -L /var/www/livelyteams/releases/20201023134615/public/system ] as dev@174.138.125.184
+ DEBUG [dd146fb2] Command: [ -L /var/www/livelyteams/releases/20201023134615/public/system ]
+ DEBUG [dd146fb2] Finished in 0.046 seconds with exit status 1 (failed).
+ DEBUG [99b25f63] Running [ -d /var/www/livelyteams/releases/20201023134615/public/system ] as dev@174.138.125.184
+ DEBUG [99b25f63] Command: [ -d /var/www/livelyteams/releases/20201023134615/public/system ]
+ DEBUG [99b25f63] Finished in 0.048 seconds with exit status 1 (failed).
+  INFO [b300d9cb] Running /usr/bin/env ln -s /var/www/livelyteams/shared/public/system /var/www/livelyteams/releases/20201023134615/public/system as dev@174.138.125.184
+ DEBUG [b300d9cb] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env ln -s /var/www/livelyteams/shared/public/system /var/www/livelyteams/releases/20201023134615/public/system )
+  INFO [b300d9cb] Finished in 0.050 seconds with exit status 0 (successful).
+ DEBUG [5369c5c3] Running [ -L /var/www/livelyteams/releases/20201023134615/public/uploads ] as dev@174.138.125.184
+ DEBUG [5369c5c3] Command: [ -L /var/www/livelyteams/releases/20201023134615/public/uploads ]
+ DEBUG [5369c5c3] Finished in 0.049 seconds with exit status 1 (failed).
+ DEBUG [083b6ca9] Running [ -d /var/www/livelyteams/releases/20201023134615/public/uploads ] as dev@174.138.125.184
+ DEBUG [083b6ca9] Command: [ -d /var/www/livelyteams/releases/20201023134615/public/uploads ]
+ DEBUG [083b6ca9] Finished in 0.048 seconds with exit status 1 (failed).
+  INFO [3f365879] Running /usr/bin/env ln -s /var/www/livelyteams/shared/public/uploads /var/www/livelyteams/releases/20201023134615/public/uploads as dev@174.138.125.184
+ DEBUG [3f365879] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env ln -s /var/www/livelyteams/shared/public/uploads /var/www/livelyteams/releases/20201023134615/public/uploads )
+  INFO [3f365879] Finished in 0.050 seconds with exit status 0 (successful).
+ DEBUG [35fd7153] Running [ -L /var/www/livelyteams/releases/20201023134615/public/assets ] as dev@174.138.125.184
+ DEBUG [35fd7153] Command: [ -L /var/www/livelyteams/releases/20201023134615/public/assets ]
+ DEBUG [35fd7153] Finished in 0.049 seconds with exit status 1 (failed).
+ DEBUG [2d3829e0] Running [ -d /var/www/livelyteams/releases/20201023134615/public/assets ] as dev@174.138.125.184
+ DEBUG [2d3829e0] Command: [ -d /var/www/livelyteams/releases/20201023134615/public/assets ]
+ DEBUG [2d3829e0] Finished in 0.049 seconds with exit status 1 (failed).
+  INFO [212e9167] Running /usr/bin/env ln -s /var/www/livelyteams/shared/public/assets /var/www/livelyteams/releases/20201023134615/public/assets as dev@174.138.125.184
+ DEBUG [212e9167] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env ln -s /var/www/livelyteams/shared/public/assets /var/www/livelyteams/releases/20201023134615/public/assets )
+  INFO [212e9167] Finished in 0.049 seconds with exit status 0 (successful).
+ DEBUG [7abcd933] Running if test ! -d /var/www/livelyteams/releases/20201023134615; then echo "Directory does not exist '/var/www/livelyteams/releases/20201023134615'" 1>&2; false; fi as dev@174.138.125.184
+ DEBUG [7abcd933] Command: if test ! -d /var/www/livelyteams/releases/20201023134615; then echo "Directory does not exist '/var/www/livelyteams/releases/20201023134615'" 1>&2; false; fi
+ DEBUG [7abcd933] Finished in 0.048 seconds with exit status 0 (successful).
+  INFO [69acf5df] Running RBENV_ROOT=$HOME/.rbenv RBENV_VERSION=2.6.5 $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true as dev@174.138.125.184
+ DEBUG [69acf5df] Command: cd /var/www/livelyteams/releases/20201023134615 && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; RBENV_ROOT=$HOME/.rbenv RBENV_VERSION=2.6.5 $HOME/.rbenv/bin/rbenv exec bundle config --local deployment true )
+  INFO [69acf5df] Finished in 0.322 seconds with exit status 0 (successful).
+  INFO [991cd1b5] Running RBENV_ROOT=$HOME/.rbenv RBENV_VERSION=2.6.5 $HOME/.rbenv/bin/rbenv exec bundle config --local path /var/www/livelyteams/shared/bundle as dev@174.138.125.184
+ DEBUG [991cd1b5] Command: cd /var/www/livelyteams/releases/20201023134615 && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; RBENV_ROOT=$HOME/.rbenv RBENV_VERSION=2.6.5 $HOME/.rbenv/bin/rbenv exec bundle config --local path /var/www/livelyteams/shared/bundle )
+  INFO [991cd1b5] Finished in 0.244 seconds with exit status 0 (successful).
+  INFO [8a2ff1b0] Running RBENV_ROOT=$HOME/.rbenv RBENV_VERSION=2.6.5 $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test as dev@174.138.125.184
+ DEBUG [8a2ff1b0] Command: cd /var/www/livelyteams/releases/20201023134615 && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; RBENV_ROOT=$HOME/.rbenv RBENV_VERSION=2.6.5 $HOME/.rbenv/bin/rbenv exec bundle config --local without development:test )
+  INFO [8a2ff1b0] Finished in 0.274 seconds with exit status 0 (successful).
+ DEBUG [37da5950] Running if test ! -d /var/www/livelyteams/releases/20201023134615; then echo "Directory does not exist '/var/www/livelyteams/releases/20201023134615'" 1>&2; false; fi as dev@174.138.125.184
+ DEBUG [37da5950] Command: if test ! -d /var/www/livelyteams/releases/20201023134615; then echo "Directory does not exist '/var/www/livelyteams/releases/20201023134615'" 1>&2; false; fi
+ DEBUG [37da5950] Finished in 0.048 seconds with exit status 0 (successful).
+ DEBUG [62d9d972] Running RBENV_ROOT=$HOME/.rbenv RBENV_VERSION=2.6.5 $HOME/.rbenv/bin/rbenv exec bundle check as dev@174.138.125.184
+ DEBUG [62d9d972] Command: cd /var/www/livelyteams/releases/20201023134615 && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; RBENV_ROOT=$HOME/.rbenv RBENV_VERSION=2.6.5 $HOME/.rbenv/bin/rbenv exec bundle check )
+ DEBUG [62d9d972] 	The dependency tzinfo-data (>= 0) will be unused by any of the platforms Bundler is installing for. Bundler is installing for ruby but the dependency is only for x86-mingw32, x86-mswin32, x64-mingw32, java. To add those platforms to the bundle, run `bundle lock --add-platform x86-mingw32 x86-mswin32 x64-mingw32 java`.
+ DEBUG [62d9d972] 	The Gemfile's dependencies are satisfied
+ DEBUG [62d9d972] Finished in 0.590 seconds with exit status 0 (successful).
+  INFO The Gemfile's dependencies are satisfied, skipping installation
+ DEBUG [39040da2] Running if test ! -d /var/www/livelyteams/releases/20201023134615; then echo "Directory does not exist '/var/www/livelyteams/releases/20201023134615'" 1>&2; false; fi as dev@174.138.125.184
+ DEBUG [39040da2] Command: if test ! -d /var/www/livelyteams/releases/20201023134615; then echo "Directory does not exist '/var/www/livelyteams/releases/20201023134615'" 1>&2; false; fi
+ DEBUG [39040da2] Finished in 0.049 seconds with exit status 0 (successful).
+  INFO [6e5c6fd7] Running RBENV_ROOT=$HOME/.rbenv RBENV_VERSION=2.6.5 $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile as dev@174.138.125.184
+ DEBUG [6e5c6fd7] Command: cd /var/www/livelyteams/releases/20201023134615 && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" RAILS_ENV="production" RAILS_GROUPS="" ; RBENV_ROOT=$HOME/.rbenv RBENV_VERSION=2.6.5 $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile )
+ DEBUG [6e5c6fd7] 	yarn install v1.22.5
+ DEBUG [6e5c6fd7] 	[1/4] Resolving packages...
+ DEBUG [6e5c6fd7] 	[2/4] Fetching packages...
+ DEBUG [6e5c6fd7] 	info fsevents@2.1.3: The platform "linux" is incompatible with this module.
+ DEBUG [6e5c6fd7] 	info "fsevents@2.1.3" is an optional dependency and failed compatibility check. Excluding it from installation.
+ DEBUG [6e5c6fd7] 	info fsevents@1.2.13: The platform "linux" is incompatible with this module.
+ DEBUG [6e5c6fd7] 	info "fsevents@1.2.13" is an optional dependency and failed compatibility check. Excluding it from installation.
+ DEBUG [6e5c6fd7] 	[3/4] Linking dependencies...
+ DEBUG [6e5c6fd7] 	warning " > webpack-dev-server@3.11.0" has unmet peer dependency "webpack@^4.0.0 || ^5.0.0".
+ DEBUG [6e5c6fd7] 	warning "webpack-dev-server > webpack-dev-middleware@3.7.2" has unmet peer dependency "webpack@^4.0.0".
+ DEBUG [6e5c6fd7] 	[4/4] Building fresh packages...
+ DEBUG [6e5c6fd7] 	Done in 10.68s.
+ DEBUG [6e5c6fd7] 	Compiling...
+ DEBUG [6e5c6fd7] 	Compiled all packs in /var/www/livelyteams/releases/20201023134615/public/packs
+Hash: b4d7dfadfb4bb34f670e
+Version: webpack 4.44.2
+Time: 1214ms
+Built at: 10/23/2020 1:46:44 PM
+                                        Asset       Size  Chunks                         Chunk Names
+       js/application-876d1de039599cfce93c.js   1.02 KiB       0  [emitted] [immutable]  application
+    js/application-876d1de039599cfce93c.js.br  490 bytes          [emitted]              
+    js/application-876d1de039599cfce93c.js.gz  539 bytes          [emitted]              
+   js/application-876d1de039599cfce93c.js.map   5.49 KiB       0  [emitted] [dev]        application
+js/application-876d1de039599cfce93c.js.map.br    1.9 KiB          [emitted]              
+js/application-876d1de039599cfce93c.js.map.gz   2.18 KiB          [emitted]              
+                                manifest.json  364 bytes          [emitted]              
+                             manifest.json.br  126 bytes          [emitted]              
+                             manifest.json.gz  142 bytes          [emitted]              
+Entrypoint application = js/application-876d1de039599cfce93c.js js/application-876d1de039599cfce93c.js.map
+[0] ./app/javascript/packs/application.js 845 bytes {0} [built]
+
+  INFO [6e5c6fd7] Finished in 21.092 seconds with exit status 0 (successful).
+ DEBUG [4ae2d7df] Running if test ! -d /var/www/livelyteams/releases/20201023134615; then echo "Directory does not exist '/var/www/livelyteams/releases/20201023134615'" 1>&2; false; fi as dev@174.138.125.184
+ DEBUG [4ae2d7df] Command: if test ! -d /var/www/livelyteams/releases/20201023134615; then echo "Directory does not exist '/var/www/livelyteams/releases/20201023134615'" 1>&2; false; fi
+ DEBUG [4ae2d7df] Finished in 0.050 seconds with exit status 0 (successful).
+  INFO [da612953] Running /usr/bin/env mkdir -p /var/www/livelyteams/releases/20201023134615/assets_manifest_backup as dev@174.138.125.184
+ DEBUG [da612953] Command: cd /var/www/livelyteams/releases/20201023134615 && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env mkdir -p /var/www/livelyteams/releases/20201023134615/assets_manifest_backup )
+  INFO [da612953] Finished in 0.052 seconds with exit status 0 (successful).
+ DEBUG [f7f280ea] Running /usr/bin/env ls /var/www/livelyteams/releases/20201023134615/public/assets/.sprockets-manifest* as dev@174.138.125.184
+ DEBUG [f7f280ea] Command: cd /var/www/livelyteams/releases/20201023134615 && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env ls /var/www/livelyteams/releases/20201023134615/public/assets/.sprockets-manifest* )
+ DEBUG [f7f280ea] 	/var/www/livelyteams/releases/20201023134615/public/assets/.sprockets-manifest-9ff73a482eb486d63cf8b1c0c7c47bd4.json
+ DEBUG [f7f280ea] Finished in 0.051 seconds with exit status 0 (successful).
+ DEBUG [85f9849d] Running /usr/bin/env ls /var/www/livelyteams/releases/20201023134615/public/assets/.sprockets-manifest* as dev@174.138.125.184
+ DEBUG [85f9849d] Command: cd /var/www/livelyteams/releases/20201023134615 && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env ls /var/www/livelyteams/releases/20201023134615/public/assets/.sprockets-manifest* )
+ DEBUG [85f9849d] 	/var/www/livelyteams/releases/20201023134615/public/assets/.sprockets-manifest-9ff73a482eb486d63cf8b1c0c7c47bd4.json
+ DEBUG [85f9849d] Finished in 0.050 seconds with exit status 0 (successful).
+  INFO [d902c13e] Running /usr/bin/env cp /var/www/livelyteams/releases/20201023134615/public/assets/.sprockets-manifest-9ff73a482eb486d63cf8b1c0c7c47bd4.json /var/www/livelyteams/releases/20201023134615/assets_manifest_backup as dev@174.138.125.184
+ DEBUG [d902c13e] Command: cd /var/www/livelyteams/releases/20201023134615 && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env cp /var/www/livelyteams/releases/20201023134615/public/assets/.sprockets-manifest-9ff73a482eb486d63cf8b1c0c7c47bd4.json /var/www/livelyteams/releases/20201023134615/assets_manifest_backup )
+  INFO [d902c13e] Finished in 0.050 seconds with exit status 0 (successful).
+  INFO [deploy:migrate] Run `rake db:migrate`
+ DEBUG [f9b88fed] Running if test ! -d /var/www/livelyteams/releases/20201023134615; then echo "Directory does not exist '/var/www/livelyteams/releases/20201023134615'" 1>&2; false; fi as dev@174.138.125.184
+ DEBUG [f9b88fed] Command: if test ! -d /var/www/livelyteams/releases/20201023134615; then echo "Directory does not exist '/var/www/livelyteams/releases/20201023134615'" 1>&2; false; fi
+ DEBUG [f9b88fed] Finished in 0.046 seconds with exit status 0 (successful).
+  INFO [1946b6a1] Running RBENV_ROOT=$HOME/.rbenv RBENV_VERSION=2.6.5 $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate as dev@174.138.125.184
+ DEBUG [1946b6a1] Command: cd /var/www/livelyteams/releases/20201023134615 && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" RAILS_ENV="production" ; RBENV_ROOT=$HOME/.rbenv RBENV_VERSION=2.6.5 $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate )
+  INFO [1946b6a1] Finished in 2.679 seconds with exit status 0 (successful).
+  INFO [663709e8] Running /usr/bin/env ln -s /var/www/livelyteams/releases/20201023134615 /var/www/livelyteams/releases/current as dev@174.138.125.184
+ DEBUG [663709e8] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env ln -s /var/www/livelyteams/releases/20201023134615 /var/www/livelyteams/releases/current )
+  INFO [663709e8] Finished in 0.051 seconds with exit status 0 (successful).
+  INFO [6d18cf9c] Running /usr/bin/env mv /var/www/livelyteams/releases/current /var/www/livelyteams as dev@174.138.125.184
+ DEBUG [6d18cf9c] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env mv /var/www/livelyteams/releases/current /var/www/livelyteams )
+  INFO [6d18cf9c] Finished in 0.050 seconds with exit status 0 (successful).
+ DEBUG [391a9353] Running if test ! -d /var/www/livelyteams/releases/20201023134615; then echo "Directory does not exist '/var/www/livelyteams/releases/20201023134615'" 1>&2; false; fi as dev@174.138.125.184
+ DEBUG [391a9353] Command: if test ! -d /var/www/livelyteams/releases/20201023134615; then echo "Directory does not exist '/var/www/livelyteams/releases/20201023134615'" 1>&2; false; fi
+ DEBUG [391a9353] Finished in 0.048 seconds with exit status 0 (successful).
+ DEBUG [1edcbf25] Running /usr/bin/env passenger -v as dev@174.138.125.184
+ DEBUG [1edcbf25] Command: cd /var/www/livelyteams/releases/20201023134615 && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" PATH="/usr/bin:$PATH" ; /usr/bin/env passenger -v )
+ DEBUG [1edcbf25] 	Phusion Passenger 6.0.6
+ DEBUG [1edcbf25] Finished in 0.168 seconds with exit status 0 (successful).
+  INFO [5d19e93f] Running /usr/bin/env /usr/bin/passenger-config restart-app /var/www/livelyteams --ignore-app-not-running as dev@174.138.125.184
+ DEBUG [5d19e93f] Command: cd /var/www/livelyteams/releases/20201023134615 && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" PATH="/usr/bin:$PATH" ; /usr/bin/env /usr/bin/passenger-config restart-app /var/www/livelyteams --ignore-app-not-running )
+ DEBUG [5d19e93f] 	Restarting /var/www/livelyteams/current (production)
+  INFO [5d19e93f] Finished in 0.225 seconds with exit status 0 (successful).
+ DEBUG [bd257a6d] Running /usr/bin/env ls -x /var/www/livelyteams/releases as dev@174.138.125.184
+ DEBUG [bd257a6d] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env ls -x /var/www/livelyteams/releases )
+ DEBUG [bd257a6d] 	20201009143845	20201018170606	20201018171543	20201018212219	20201018212414
+20201023134615
+ DEBUG [bd257a6d] Finished in 0.009 seconds with exit status 0 (successful).
+  INFO Keeping 5 of 6 deployed releases on 174.138.125.184
+ DEBUG [5cb823c0] Running [ -d /var/www/livelyteams/current ] as dev@174.138.125.184
+ DEBUG [5cb823c0] Command: [ -d /var/www/livelyteams/current ]
+ DEBUG [5cb823c0] Finished in 0.048 seconds with exit status 0 (successful).
+ DEBUG [21e21297] Running /usr/bin/env readlink /var/www/livelyteams/current as dev@174.138.125.184
+ DEBUG [21e21297] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env readlink /var/www/livelyteams/current )
+ DEBUG [21e21297] 	/var/www/livelyteams/releases/20201023134615
+ DEBUG [21e21297] Finished in 0.050 seconds with exit status 0 (successful).
+  INFO [34c88502] Running /usr/bin/env rm -rf /var/www/livelyteams/releases/20201009143845 as dev@174.138.125.184
+ DEBUG [34c88502] Command: ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env rm -rf /var/www/livelyteams/releases/20201009143845 )
+  INFO [34c88502] Finished in 0.862 seconds with exit status 0 (successful).
+ DEBUG [9a398cef] Running if test ! -d /var/www/livelyteams/releases; then echo "Directory does not exist '/var/www/livelyteams/releases'" 1>&2; false; fi as dev@174.138.125.184
+ DEBUG [9a398cef] Command: if test ! -d /var/www/livelyteams/releases; then echo "Directory does not exist '/var/www/livelyteams/releases'" 1>&2; false; fi
+ DEBUG [9a398cef] Finished in 0.047 seconds with exit status 0 (successful).
+  INFO [d37faafd] Running /usr/bin/env echo "Branch master (at 339800e299839920d98c315a10260a638202cdfe) deployed as release 20201023134615 by dev" >> /var/www/livelyteams/revisions.log as dev@174.138.125.184
+ DEBUG [d37faafd] Command: cd /var/www/livelyteams/releases && ( export PATH="$HOME/.npm-packages/bin/:$PATH" NODE_ENVIRONMENT="production" RBENV_ROOT="$HOME/.rbenv" RBENV_VERSION="2.6.5" ; /usr/bin/env echo "Branch master (at 339800e299839920d98c315a10260a638202cdfe) deployed as release 20201023134615 by dev" >> /var/www/livelyteams/revisions.log )
+  INFO [d37faafd] Finished in 0.051 seconds with exit status 0 (successful).

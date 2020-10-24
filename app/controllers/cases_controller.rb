@@ -2,9 +2,16 @@ class CasesController < ApplicationController
   
   def index
     @open_cases = Case.where.not(status: [3,4]).sort_by &:created_at
+  end
+
+  def billable
     @billable_cases = Case.where(status: 4).sort.reverse &:updated_at
+  end
+
+  def closed
     @closed_cases = Case.where(status: 3).sort.reverse &:updated_at
   end
+
   def show
     @case = Case.find(params[:id]) 
   end
