@@ -27,6 +27,7 @@ gem 'mini_magick'
 gem 'mini_racer'
 gem 'aws-sdk', '~> 3.0', '>= 3.0.1'
 gem 'webpacker'
+gem 'poppler', '~> 3.0', '>= 3.0.7'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
