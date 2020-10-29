@@ -42,7 +42,7 @@
 </p>
 <p>
   <% @case.files.each do |file| %>
-    <%= link_to file.filename, rails_blob_path(file) %><br>
+    <%= link_to file.filename, url_for(file) %><br>
   <% end %>
 </p>
 
