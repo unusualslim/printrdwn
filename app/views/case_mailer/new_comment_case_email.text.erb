@@ -1,0 +1,7 @@
+ID:  <%= @case.id %>
+SUBJECT:  <%= @case.subject %>
+REQUESTED BY:  <%= @case.requested_by.email unless @case.requested_by.blank? %>
+STATUS:  <%= @case.status.status unless @case.status.blank? %>
+SEVERITY:  <%= @case.severity.severity unless @case.severity.blank? %>
+DESCRIPTION:   <%= @case.description %>
+

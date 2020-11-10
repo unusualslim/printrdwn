@@ -1,0 +1,35 @@
+<p> To view the most recent updates to this case go to: <br>
+<strong><%= link_to "Case No. #{@case.id}", "https://livelyteams.com/cases/#{@case.id}" %></strong>
+</p>
+<p>
+  <strong>Subject:</strong>
+  <%= @case.subject %>
+</p>
+
+<p>
+  <strong>Location(s):</strong><br>
+  <% @case.case_locations.each do  |cl| %>
+  <%= cl.location.name %><br>
+  <%= link_to cl.location.phone, "tel:#{cl.location.phone}"  %><br>
+  <%= cl.location.address1 %> <%= cl.location.address2 %><br>
+  <%= cl.location.city %>, <%= cl.location.state %> <%= cl.location.zip %>
+  <% end %>
+</p>
+
+
+<p>
+  <strong>Requested By</strong>
+  <%= @case.requested_by.email unless @case.requested_by.blank? %>
+</p>
+<p>
+  <strong>Status:</strong>
+  <%= @case.status.status unless @case.status.blank? %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @case.description %>
+</p>
+
+<h2>Comments</h2>
+  <%= render @case.case_comments %>
+
