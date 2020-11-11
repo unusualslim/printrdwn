@@ -11,4 +11,7 @@ class Case < ApplicationRecord
 
   has_many_attached :files
 
+  has_many :case_users
+  has_many :users, through: :case_users
+
 end

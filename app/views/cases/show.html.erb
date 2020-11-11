@@ -29,6 +29,16 @@
   <%= @case.assigned_to.email unless @case.assigned_to.blank? %>
 </p>
 <p>
+  <strong>Followed By:</strong><br>
+  <% @case.case_users.each do |cu| %>
+  <%= cu.user.email %>
+  <br />
+  <% end %>
+</p>
+
+
+
+<p>
   <strong>Status</strong>
   <%= @case.status.status unless @case.status.blank? %>
 </p>

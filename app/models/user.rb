@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :cases
   has_many :tasks
   has_many :comment
+  has_many :cases, through: :case_users
+
 #  has_many :team_members
 #  has_many :teams, through: :team_members
 #  has_many :roles, through: :team_members
