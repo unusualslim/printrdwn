@@ -18,11 +18,31 @@ default from: 'notifcations@livelyteams.com'
 
  def update_case_email(updated_case)
    @case = updated_case
-   mail(to: [@case.requested_by.email, @case.assigned_to.email], subject: "Case No. #{@case.id} has been updated")
+   recipient = []
+   @case.case_users.each do |cu|
+     recipient.push(cu.user.email)
+   end
+   recipient.push(@case.requested_by.email)
+   recipient.push(@case.assigned_to.email)
+
+    mail(
+       to: recipient.uniq,
+       subject: "Case No. #{@case.id} has been updated"
+    )
  end
  def new_comment_case_email(updated_case)
    @case = updated_case
-   mail(to: [@case.requested_by.email, @case.assigned_to.email], subject: "Case No. #{@case.id} has a new comment")
+   recipient = []
+   @case.case_users.each do |cu|
+     recipient.push(cu.user.email)
+   end
+   recipient.push(@case.requested_by.email)
+   recipient.push(@case.assigned_to.email)
+
+    mail(
+       to: recipient.uniq,
+       subject: "Case No. #{@case.id} has a new comment"  
+    )
  end
 
 end
