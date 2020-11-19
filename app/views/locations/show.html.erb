@@ -20,7 +20,7 @@
   <tbody>
   <% @location.case_locations.each do |task| %>
     <tr scope="row">
-      <td><%= link_to task.case.id, case_path(task) %></td>
+      <td><%= link_to task.case.id, case_path(task.case) %></td>
       <td><%= task.case.subject %></td>
       <td><%= task.case.requested_by.email unless task.case.requested_by.blank? %></td>
       <td><%= task.case.assigned_to.email unless task.case.assigned_to.blank? %></td>
