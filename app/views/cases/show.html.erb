@@ -51,8 +51,8 @@
   <%= @case.severity.severity unless @case.status.blank? %>
 </p>
 <p>
-  <% @case.files.each do |file| %>
-    <%= link_to file.filename, url_for(file) %><br>
+  <% @case.files.each do |f| %>
+    <%= link_to f.filename, url_for(f) %><br>
   <% end %>
 </p>
 

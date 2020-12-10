@@ -2,6 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.hosts << "printrdwn.com"
   config.hosts << "livelyteams.com"
+  config.hosts << "159.89.180.186"
   config.web_console.whiny_requests = false
 
   # In the development environment your application's code is reloaded on

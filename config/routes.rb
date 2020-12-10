@@ -57,7 +57,7 @@ Rails.application.routes.draw do
 
 #  post "change_filename", to: "things#change_filename", as: "change_filename"
 #  post "set_current_team", to: "teams#set_current_team", as: 'set_current_team' 
-  match '*_missing_page', to: 'pages#not_found', via: :get
+#  match '*_missing_page', to: 'pages#not_found', via: :get
 
 
 end
