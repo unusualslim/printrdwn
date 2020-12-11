@@ -7,7 +7,7 @@
 <br />
 <h2>Open Cases (<%= @open_cases.count %>)</h2>
 <br />
-<%= link_to 'New Case', new_case_path, :class => "btn btn-primary" %>  
+<%= link_to 'New Case', new_case_path, :class => "btn btn-success" %>  
 <input id="gfg" type="text" placeholder="Search here"> 
 <br /> 
 <br />      
@@ -36,7 +36,7 @@
     <p class="card-text"><%= c.description %></p>
   </div>
   <div class="card-footer">
-    Assigned to <%= c.assigned_to.email %><br />
+    Assigned to <strong><%= c.assigned_to.email %></strong><br />
     <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseLocations<%= c.id %>" aria-expanded="false" aria-controls="collapseLocations<%= c.id %>">
       <%= c.case_locations.first.location.name %> (<%= c.case_comments.count %>)
     </button>
