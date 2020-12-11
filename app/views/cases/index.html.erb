@@ -1,64 +1,69 @@
-<%= link_to 'Open Cases', cases_path %>
-<%= link_to 'Billable Cases', billable_cases_path %>
-<%= link_to 'Closed Cases', closed_cases_path %>
+<div>
+<%= link_to 'Open Cases', cases_path, :class=> "btn btn-primary" %>
+<%= link_to 'Billable Cases', billable_cases_path, :class=> "btn btn-secondary" %>
+<%= link_to 'Closed Cases', closed_cases_path, :class=> "btn btn-secondary" %>
+</div>
+<br />
+<br />
 <h2>Open Cases (<%= @open_cases.count %>)</h2>
+<br />
 <%= link_to 'New Case', new_case_path, :class => "btn btn-primary" %>  
 <input id="gfg" type="text" placeholder="Search here"> 
       
-<table class="table table-responsive">
-  <thead>
-    <tr>
-      <th scope="col">Case No.</th>
-      <th scope="col">Subject</th>
-      <th scope="col">Locations</th>
-<!--      <th scope="col">Requested By</th>-->
-      <th scope="col">Assigned To</th>
-      <th scope="col">Comments</th>
-      <th scope="col">Attachments</th>
-      <th scope="col">Status</th>
-      <th scope="col">Severity</th>
-      <th scope="col">Created On</th>
-      <th scope="col" colspan="2"></th>
-    </tr>
-  </thead>
 
-  <tbody id="geeks">
-  <% @open_cases.each do |c| %>
-  <% case  c.severity.severity
-    when "Urgent" %>
-      <tr scope="row" class="table-danger">
-    <% when "Low"  %>
-      <tr scope="row" class="table-secondary">
-    <% else %>
-      <tr scope="row" class="table-white">
-  <% end %>
-    <td><%= link_to c.id, case_path(c), :class => "btn btn-primary" %></td>
-    <td><%= c.subject %></td>
-    <td><% c.case_locations.each do |tl| %>
-          <%= link_to "#{tl.location.short_name} (#{tl.location.city})", location_path(tl.location), :class => "btn btn-info" %>
-        <% end %>
-    </td>
-   <!-- <td><%# c.requested_by.email unless c.requested_by.blank? %></td>-->
-    <td><%= c.assigned_to.email unless c.assigned_to.blank? %></td>
-    <td><span class="badge badge-dark"><%= c.case_comments.count %></span></td>
-    <td><span class="badge badge-dark"><%= c.files.count %></span></td>
-    <% case c.status.status
-      when 'Open' %>
-        <td><span class="dot"></span><%= c.status.status unless c.status.blank? %></td>
-      <% when 'In progress' %>
-        <td><span class="spinner-border spinner-border-sm"></span> <%= c.status.status unless c.status.blank? %></td>
-      <% when 'Complete: Billable' %>
-        <td><span class="badge badge-success"><%= c.status.status unless c.status.blank? %></span></td>
+<% @open_cases.each do |c| %>
+<div class="card">
+  <div class="card-header"> 
+    <% case  c.severity.severity
+      when "Urgent" %>
+        [Urgent]
+      <% when "Low"  %>
+        [Low]
+      <% else %>
+        [Normal]
     <% end %>
 
-    <td><%= c.severity.severity unless c.severity.blank? %></td>
-    <td><%= c.created_at.strftime("%B %d, %Y")  %></td>
-    <td><%= link_to 'Edit', edit_case_path(c) %></td>
-    <td><%= link_to 'X', case_path(c), method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger btn-sm" %></td>
-  </tr>
-  <% end %>
-  </tbody>
-</table>
+    <%= link_to "Case No. #{c.id}", case_path(c) %>
+    <% case c.status.status
+       when 'In progress' %>
+        <span class="spinner-border spinner-border-sm"></span>
+      <% when 'Complete: Billable' %>
+        <span class="badge badge-success"><%= c.status.status unless c.status.blank? %></span>
+    <% end %>
+
+    <p class="card-text"><small class="text-muted"> Created on <%= c.created_at.strftime("%b %d, %Y")  %></small></p>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= c.subject %></h5>
+    <p class="card-text"><%= c.description %></p>
+    <p class="card-text"><small class="text-muted">Last updated <%=c.updated_at.strftime("%B %d") %></small></p>
+    <% c.case_locations.each do |tl| %>
+      <%= link_to "#{tl.location.short_name} (#{tl.location.city})", location_path(tl.location), :class => "btn btn-outline-dark" %>
+    <% end %> 
+  </div>
+  <div class="card-footer text-muted">
+    Assigned to <%= c.assigned_to.email %><br /><br />
+    <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseComments" aria-expanded="false" aria-controls="collapseComments">
+      Comments
+    </button>
+    <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseAttachments" aria-expanded="false" aria-controls="collapseAttachments">
+      Attachments
+    </button>
+  
+      <div class="collapse" id="collapseComments"><%= render c.case_comments %></div>
+      <%# render 'case_comments/form' %>
+      <div class="collapse" id="collapseAttachments">
+        <% c.files.each do |f| %>
+          <%= link_to f.filename, url_for(f) %><br>
+        <% end %>
+      </div>
+
+  </div>
+
+</div>
+<br>
+<% end %>
+
 <script> 
             $(document).ready(function() { 
                 $("#gfg").on("keyup", function() { 
