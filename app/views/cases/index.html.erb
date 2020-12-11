@@ -44,10 +44,10 @@
   <div class="card-footer text-muted">
     Assigned to <%= c.assigned_to.email %><br /><br />
     <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseComments<%= c.id %>" aria-expanded="false" aria-controls="collapseComments<%= c.id %>">
-      Comments
+      Comments (<%= c.case_comments.count %>)
     </button>
-    <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseAttachments%= c.id %>" aria-expanded="false" aria-controls="collapseAttachments<%= c.id %>">
-      Attachments
+    <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseAttachments<%= c.id %>" aria-expanded="false" aria-controls="collapseAttachments<%= c.id %>">
+      Attachments (<%= c.files.count %>)
     </button>
   
       <div class="collapse" id="collapseComments<%= c.id %>"><%= render c.case_comments %></div>
