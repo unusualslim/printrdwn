@@ -8,48 +8,52 @@
 <h2>Open Cases (<%= @open_cases.count %>)</h2>
 <br />
 <%= link_to 'New Case', new_case_path, :class => "btn btn-primary" %>  
+<input id="gfg" type="text" placeholder="Search here"> 
 <br /> 
 <br />      
 
+<div class="container-fluid" id="geeks">
 <% @open_cases.each do |c| %>
-<div class="card">
-  <div class="card-header"> 
-    <% case  c.severity.severity
-      when "Urgent" %>
-        [Urgent]
-      <% when "Low"  %>
-        [Low]
-      <% else %>
-        [Normal]
-    <% end %>
-
-    <%= link_to "Case No. #{c.id}", case_path(c) %>
+  <div class="card border border-dark">
+  <div class="card-body"> 
     <% case c.status.status
        when 'In progress' %>
         <span class="spinner-border spinner-border-sm"></span>
       <% when 'Complete: Billable' %>
         <span class="badge badge-success"><%= c.status.status unless c.status.blank? %></span>
     <% end %>
-
+    <span style="font-size: 1.5em;"><strong><%= link_to "Case No. #{c.id}", case_path(c) %> 
+<% case  c.severity.severity
+    when "Urgent" %>
+      [Urgent]
+    <% when "Low"  %>
+      [Low]
+    <% else %>
+      [Normal]
+  <% end %>    
+    <%= c.subject %></strong></span>    
     <p class="card-text"><small class="text-muted"> Created on <%= c.created_at.strftime("%b %d, %Y")  %></small></p>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title"><%= c.subject %></h5>
     <p class="card-text"><%= c.description %></p>
-    <p class="card-text"><small class="text-muted">Last updated <%=c.updated_at.strftime("%B %d") %></small></p>
-    <% c.case_locations.each do |tl| %>
-      <%= link_to "#{tl.location.short_name} (#{tl.location.city})", location_path(tl.location), :class => "btn btn-secondary" %>
-    <% end %> 
   </div>
-  <div class="card-footer text-muted">
-    Assigned to <%= c.assigned_to.email %><br /><br />
+  <div class="card-footer">
+    Assigned to <%= c.assigned_to.email %><br />
+    <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseLocations<%= c.id %>" aria-expanded="false" aria-controls="collapseLocations<%= c.id %>">
+      <%= c.case_locations.first.location.name %> (<%= c.case_comments.count %>)
+    </button>
+
+
     <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseComments<%= c.id %>" aria-expanded="false" aria-controls="collapseComments<%= c.id %>">
       Comments (<%= c.case_comments.count %>)
     </button>
     <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseAttachments<%= c.id %>" aria-expanded="false" aria-controls="collapseAttachments<%= c.id %>">
       Attachments (<%= c.files.count %>)
     </button>
-  
+      <div class="collapse" id="collapseLocations<%= c.id%>">
+        <% c.case_locations.each do |tl| %>
+          <%= link_to "#{tl.location.name} (#{tl.location.city})", location_path(tl.location), :class => "btn btn-outline-primary" %>
+        <% end %>
+      </div> 
+
       <div class="collapse" id="collapseComments<%= c.id %>"><%= render c.case_comments %>
         <%= form_with(model: [ c, c.case_comments.build ]) do |f| %>
           <div class="form-group">
@@ -73,12 +77,12 @@
 </div>
 <br>
 <% end %>
-
+</div>
 <script> 
             $(document).ready(function() { 
                 $("#gfg").on("keyup", function() { 
                     var value = $(this).val().toLowerCase(); 
-                    $("#geeks tr").filter(function() { 
+                    $("#geeks .card").filter(function() { 
                         $(this).toggle($(this).text() 
                         .toLowerCase().indexOf(value) > -1) 
                     }); 
