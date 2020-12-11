@@ -50,8 +50,18 @@
       Attachments (<%= c.files.count %>)
     </button>
   
-      <div class="collapse" id="collapseComments<%= c.id %>"><%= render c.case_comments %></div>
-      <%# render 'case_comments/form' %>
+      <div class="collapse" id="collapseComments<%= c.id %>"><%= render c.case_comments %>
+        <%= form_with(model: [ c, c.case_comments.build ]) do |f| %>
+          <div class="form-group">
+            <%= f.text_area :body, :class => "form-control", :rows => 2, :cols => 1 %>
+          </div>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+          <p>
+            <%= f.submit 'Add Comment', class: "btn btn-primary" %>
+          </p>
+        <% end %>
+      </div>
+
       <div class="collapse" id="collapseAttachments<%= c.id %>">
         <% c.files.each do |f| %>
           <%= link_to f.filename, url_for(f) %><br>
