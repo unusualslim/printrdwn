@@ -8,8 +8,8 @@
 <h2>Open Cases (<%= @open_cases.count %>)</h2>
 <br />
 <%= link_to 'New Case', new_case_path, :class => "btn btn-primary" %>  
-<input id="gfg" type="text" placeholder="Search here"> 
-      
+<br /> 
+<br />      
 
 <% @open_cases.each do |c| %>
 <div class="card">
@@ -38,21 +38,21 @@
     <p class="card-text"><%= c.description %></p>
     <p class="card-text"><small class="text-muted">Last updated <%=c.updated_at.strftime("%B %d") %></small></p>
     <% c.case_locations.each do |tl| %>
-      <%= link_to "#{tl.location.short_name} (#{tl.location.city})", location_path(tl.location), :class => "btn btn-outline-dark" %>
+      <%= link_to "#{tl.location.short_name} (#{tl.location.city})", location_path(tl.location), :class => "btn btn-secondary" %>
     <% end %> 
   </div>
   <div class="card-footer text-muted">
     Assigned to <%= c.assigned_to.email %><br /><br />
-    <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseComments" aria-expanded="false" aria-controls="collapseComments">
+    <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseComments<%= c.id %>" aria-expanded="false" aria-controls="collapseComments<%= c.id %>">
       Comments
     </button>
-    <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseAttachments" aria-expanded="false" aria-controls="collapseAttachments">
+    <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseAttachments%= c.id %>" aria-expanded="false" aria-controls="collapseAttachments<%= c.id %>">
       Attachments
     </button>
   
-      <div class="collapse" id="collapseComments"><%= render c.case_comments %></div>
+      <div class="collapse" id="collapseComments<%= c.id %>"><%= render c.case_comments %></div>
       <%# render 'case_comments/form' %>
-      <div class="collapse" id="collapseAttachments">
+      <div class="collapse" id="collapseAttachments<%= c.id %>">
         <% c.files.each do |f| %>
           <%= link_to f.filename, url_for(f) %><br>
         <% end %>
