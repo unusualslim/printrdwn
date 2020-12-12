@@ -38,7 +38,7 @@
   <div class="card-footer">
     Assigned to <strong><%= c.assigned_to.email %></strong><br />
     <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseLocations<%= c.id %>" aria-expanded="false" aria-controls="collapseLocations<%= c.id %>">
-      <%= c.case_locations.first.location.name %> (<%= c.case_comments.count %>)
+      <%= c.case_locations.first.location.name %> (<%= c.case_locations.count %>)
     </button>
 
 
