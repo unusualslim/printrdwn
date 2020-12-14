@@ -12,49 +12,58 @@
 <br /> 
 <br />      
 
-<div class="container-fluid" id="geeks">
-<% @open_cases.each do |c| %>
-  <div class="card border border-dark">
-  <div class="card-body"> 
-    <% case c.status.status
-       when 'In progress' %>
-        <span class="spinner-border spinner-border-sm"></span>
-      <% when 'Complete: Billable' %>
-        <span class="badge badge-success"><%= c.status.status unless c.status.blank? %></span>
-    <% end %>
-    <span style="font-size: 1.5em;"><strong><%= link_to "Case No. #{c.id}", case_path(c) %> 
-<% case  c.severity.severity
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <th scope="col" colspan="1"></th>
+      <th scope="col">Case No.</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Assigned To</th>
+      <th scope="col">Created On</th>
+      <th scope="col" colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody id="geeks">
+  <% @open_cases.each do |c| %>
+  <% case  c.severity.severity
     when "Urgent" %>
-      [Urgent]
+      <tr scope="row" class="table-danger">
     <% when "Low"  %>
-      [Low]
+      <tr scope="row" class="table-secondary">
     <% else %>
-      [Normal]
-  <% end %>    
-    <%= c.subject %></strong></span>    
-    <p class="card-text"><small class="text-muted"> Created on <%= c.created_at.strftime("%b %d, %Y")  %></small></p>
-    <p class="card-text"><%= c.description %></p>
-  </div>
-  <div class="card-footer">
-    Assigned to <strong><%= c.assigned_to.email %></strong><br />
-    <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseLocations<%= c.id %>" aria-expanded="false" aria-controls="collapseLocations<%= c.id %>">
-      <%= c.case_locations.first.location.name %> (<%= c.case_locations.count %>)
-    </button>
-
-
-    <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseComments<%= c.id %>" aria-expanded="false" aria-controls="collapseComments<%= c.id %>">
-      Comments (<%= c.case_comments.count %>)
-    </button>
-    <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseAttachments<%= c.id %>" aria-expanded="false" aria-controls="collapseAttachments<%= c.id %>">
-      Attachments (<%= c.files.count %>)
-    </button>
-      <div class="collapse" id="collapseLocations<%= c.id%>">
+      <tr scope="row" class="table-white">
+  <% end %>
+    <td> 
+      <% case c.status.status
+         when 'In progress' %>
+          <span class="spinner-border spinner-border-sm"></span>
+        <% when 'Complete: Billable' %>
+          <span class="badge badge-success"><%= c.status.status unless c.status.blank? %></span>
+      <% end %>
+    </td>
+    <td><%= link_to "Case No. #{c.id}", case_path(c) %></td>     
+    <td><%= c.subject %></td>    
+    <td><%= c.assigned_to.email %></td>
+    <td><small class="text-muted"> Created on <%= c.created_at.strftime("%b %d, %Y")  %></small></td>
+    <td><button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseLocations<%= c.id %>" aria-expanded="false" aria-controls="collapseLocations<%= c.id %>">
+          <%= c.case_locations.first.location.name %> (<%= c.case_locations.count %>)
+        </button>
+        <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseComments<%= c.id %>" aria-expanded="false" aria-controls="collapseComments<%= c.id %>">
+          Comments (<%= c.case_comments.count %>)
+        </button>
+        <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#collapseAttachments<%= c.id %>" aria-expanded="false" aria-controls="collapseAttachments<%= c.id %>">
+          Attachments (<%= c.files.count %>)
+        </button>
+     </td>
+   </tr>
+   <tr class="collapse" id="collapseLocations<%= c.id%>">
         <% c.case_locations.each do |tl| %>
           <%= link_to "#{tl.location.name} (#{tl.location.city})", location_path(tl.location), :class => "btn btn-outline-primary" %>
         <% end %>
-      </div> 
+   </tr> 
 
-      <div class="collapse" id="collapseComments<%= c.id %>"><%= render c.case_comments %>
+      <tr class="collapse" id="collapseComments<%= c.id %>"><%= render c.case_comments %>
         <%= form_with(model: [ c, c.case_comments.build ]) do |f| %>
           <div class="form-group">
             <%= f.text_area :body, :class => "form-control", :rows => 2, :cols => 1 %>
@@ -64,20 +73,18 @@
             <%= f.submit 'Add Comment', class: "btn btn-primary" %>
           </p>
         <% end %>
-      </div>
+      </tr>
 
-      <div class="collapse" id="collapseAttachments<%= c.id %>">
+      <tr class="collapse" id="collapseAttachments<%= c.id %>">
         <% c.files.each do |f| %>
           <%= link_to f.filename, url_for(f) %><br>
         <% end %>
-      </div>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
 
-  </div>
 
-</div>
-<br>
-<% end %>
-</div>
 <script> 
             $(document).ready(function() { 
                 $("#gfg").on("keyup", function() { 
