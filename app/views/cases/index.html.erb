@@ -44,7 +44,7 @@
           <span class="badge badge-success"><%= c.status.status unless c.status.blank? %></span>
       <% end %>
     </td>
-    <td><%= link_to "Case No. #{c.id}", case_path(c) %></td>     
+    <td><%= link_to c.id, case_path(c) %></td>     
     <td><%= c.subject %></td>    
     <td><%= c.assigned_to.email %></td>
     <td><small class="text-muted"> Created on <%= c.created_at.strftime("%b %d, %Y")  %></small></td>
@@ -61,6 +61,34 @@
          </button>
      </td>
    </tr>
+   <tr>
+     <td id="collapseLocations<%= c.id %>" class="collapse bg-dark text-white" colspan="8">
+       <% c.case_locations.each do |tl| %>
+         <%= link_to "#{tl.location.name} (#{tl.location.city})", location_path(tl.location), :class => "btn btn-outline-primary" %>
+       <% end %>
+     </td>
+   </tr>
+   <tr>
+     <td class="collapse bg-dark text-white" colspan="8" id="collapseComments<%= c.id %>"><%= render c.case_comments %>
+          <%= form_with(model: [ c, c.case_comments.build ]) do |f| %>
+          <div class="form-group">
+            <%= f.text_area :body, :class => "form-control", :rows => 2, :cols => 1 %>
+          </div>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+          <p>
+            <%= f.submit 'Add Comment', class: "btn btn-primary" %>
+          </p>
+          <% end %>
+     </td>
+   </tr>
+   <tr>
+     <td class="collapse bg-dark text-white" colspan="8" id="collapseAttachments<%= c.id %>">
+       <% c.files.each do |f| %>
+         <%= link_to f.filename, url_for(f) %><br>
+       <% end %>
+     </td>
+   </tr>
+
   <% end %>
   </tbody>
 </table>
