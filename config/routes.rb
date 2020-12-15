@@ -53,6 +53,9 @@ Rails.application.routes.draw do
       get 'closed'
       get 'billable'
     end
+    put :change_status_to_closed, on: :member
+    put :change_status_to_complete_billable, on: :member
+    
   end
 
 #  post "change_filename", to: "things#change_filename", as: "change_filename"

@@ -51,7 +51,23 @@ class CasesController < ApplicationController
  
     redirect_to cases_path
   end
- 
+
+  def change_status_to_closed
+    @case = Case.find(params[:id])
+    @case.update_attribute(:status_id,3)
+  
+    redirect_to cases_path
+  end 
+
+  def change_status_to_complete_billable
+    @case = Case.find(params[:id])
+    @case.update_attribute(:status_id,4)
+
+    redirect_to cases_path
+  end
+
+
+
   private
     def case_params
       params.require(:case).permit(:subject, :status_id, :requested_by_id, :assigned_to_id, :description, :severity_id, :location_ids => [], :user_ids => [], files: [])
