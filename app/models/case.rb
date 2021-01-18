@@ -7,11 +7,11 @@ class Case < ApplicationRecord
   has_many :case_locations
   has_many :locations, through: :case_locations, dependent: :destroy
 
-  has_many :case_comments, dependent: :destroy
+  has_many :case_comments, :dependent => :destroy
 
-  has_many_attached :files
+  has_many_attached :files, :dependent => :destroy
 
-  has_many :case_users
+  has_many :case_users, :dependent => :destroy
   has_many :users, through: :case_users
 
 end
