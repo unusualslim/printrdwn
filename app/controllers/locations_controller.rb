@@ -40,12 +40,12 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
     @location.destroy
  
-    redirect_to location_path
+    redirect_to locations_path
   end
  
   private
     def location_params
-      params.require(:location).permit(:name, :short_name, :address1, :address2, :city, :state, :zip, :phone)
+      params.require(:location).permit(:name, :short_name, :address1, :address2, :city, :state, :zip, :phone, :note)
     end
 
 end

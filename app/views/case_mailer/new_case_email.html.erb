@@ -22,6 +22,10 @@
   <%= @case.requested_by.email unless @case.requested_by.blank? %>
 </p>
 <p>
+  <strong>Assinged To</strong>
+  <%= @case.assigned_to.email unless @case.assigned_to.blank? %>
+</p>
+<p>
   <strong>Status:</strong>
   <%= @case.status.status unless @case.status.blank? %>
 </p>
