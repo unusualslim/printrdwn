@@ -12,11 +12,9 @@
       </ul>
     </div>
   <% end %>
-
-  <p>
+  <p style="display:inline;">
     <%= form.submit "Save", :class => "btn btn-success" %>
   </p>
-
   <p>
     <%= form.label :short_name %>
     <%= form.text_field :short_name, {required: true, class: "form-control"} %>
