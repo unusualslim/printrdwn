@@ -31,10 +31,11 @@
     <br><%= form.label :zip %>
     <%= form.text_field :zip, class: "form-control" %>
     <br><%= form.label :phone %>
-    <%= form.text_field :phone, class: "form-control" %>
+    <%= form.text_field :phone, {class: "form-control", name: "phoneNumber", id: "phoneNumber"} %>
   </p>
 
   <%= form.text_area :note, :class => "tinymce h-100", :rows => 50, :cols => 1 %>
 <% end %>
 
 <%= tinymce %>
+

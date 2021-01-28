@@ -30,6 +30,7 @@ default from: 'notifcations@livelyteams.com'
        subject: "Case No. #{@case.id} has been updated"
     )
  end
+
  def new_comment_case_email(updated_case)
    @case = updated_case
    recipient = []
@@ -44,5 +45,37 @@ default from: 'notifcations@livelyteams.com'
        subject: "Case No. #{@case.id} has a new comment"  
     )
  end
+
+ def billable_case_email(updated_case)
+   @case = updated_case
+   recipient = []
+   @case.case_users.each do |cu|
+     recipient.push(cu.user.email)
+   end
+   recipient.push(@case.requested_by.email)
+   recipient.push(@case.assigned_to.email)
+
+    mail(
+       to: recipient.uniq,
+       subject: "Case No. #{@case.id} is complete and ready for billing"
+    )
+  end
+
+  def closed_case_email(updated_case)
+   @case = updated_case
+   recipient = []
+   @case.case_users.each do |cu|
+     recipient.push(cu.user.email)
+   end
+   recipient.push(@case.requested_by.email)
+   recipient.push(@case.assigned_to.email)
+
+    mail(
+       to: recipient.uniq,
+       subject: "Case No. #{@case.id} is now closed."
+    )
+  end
+
+
 
 end
