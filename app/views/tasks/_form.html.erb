@@ -22,7 +22,7 @@
    </p>
    <p>
      <%= form.label :task_list %>
-     <%= form.collection_select :task_list_id, TaskList.all, :id, :name, {:selected => 1}, {class: "form-control"} %>
+     <%= form.collection_select :task_list_id, TaskList.all, :id, :name,{} , {class: "form-control"} %>
    </p>
    <p>
      <%= form.label :severity %>

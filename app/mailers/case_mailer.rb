@@ -12,7 +12,7 @@ default from: 'notifcations@livelyteams.com'
  
     mail(
        to: recipient.uniq,  
-       subject: "[#{@case.severity.severity}], #{@case.subject}"
+       subject: "[#{@case.severity.severity}] Case No. #{@case.id} #{@case.subject}"
      )
  end
 
