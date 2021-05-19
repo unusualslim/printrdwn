@@ -1169,7 +1169,9 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
-    mimemagic (0.3.5)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_magick (4.11.0)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
@@ -1181,7 +1183,7 @@ GEM
     net-scp (3.0.0)
       net-ssh (>= 2.6.5, < 7.0.0)
     net-ssh (6.1.0)
-    nio4r (2.5.4)
+    nio4r (2.5.7)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
@@ -1195,7 +1197,7 @@ GEM
       cairo-gobject (= 3.4.3)
       gio2 (= 3.4.3)
     public_suffix (4.0.6)
-    puma (4.3.7)
+    puma (4.3.8)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
@@ -1322,7 +1324,7 @@ DEPENDENCIES
   passenger (>= 5.0.25)
   pg (~> 0.18)
   poppler (~> 3.0, >= 3.0.7)
-  puma (~> 4.3, >= 4.3.1)
+  puma (~> 4.3)
   rails (~> 6.0.3.1)
   selenium-webdriver
   spring
